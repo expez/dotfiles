@@ -1,0 +1,105 @@
+! Xft settings ---------------------------------------------------------------
+
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
+! terminal colors ------------------------------------------------------------
+!Tomorrow night theme
+!*foreground: #c5c8c6
+!*background: #1d1f21
+!*cursorColor: #aeafad
+!*color0: #000000
+!*color1: #912226
+!*color2: #778900
+!*color3: #ae7b00
+!*color4: #1d2594
+!*color5: #682a9b
+!*color6: #2b6651
+!*color7: #929593
+!*color8: #666666
+!*color9: #cc6666
+!*color10: #b5bd68
+!*color11: #f0c674
+!*color12: #81a2be
+!*color13: #b294bb
+!*color14: #8abeb7
+!*color15: #ecebec
+
+urxvt*background:	 #000000
+urxvt*foreground:	 #66FF66
+
+!black
+urxvt*color0:	 #1c1c1c
+urxvt*color8:	 #4d4d4d
+!red
+urxvt*color1:	 #D81860
+urxvt*color9:	 #F00060
+!green
+urxvt*color2:	 #60FF60
+urxvt*color10:	 #70FF70
+!yellow
+urxvt*color3:	 #f9fd75
+urxvt*color11:	 #f9fd80
+!blue
+urxvt*color4:	 #4695c8
+urxvt*color12:	 #5a9dc8
+!magenta
+urxvt*color5:	 #a78edb
+urxvt*color13:	 #b29fdb
+!cyan
+urxvt*color6:	 #43afce
+urxvt*color14:	 #69b8ce
+!white
+urxvt*color7:	 #f3ebe2
+urxvt*color15:	 #eeeeee
+
+! Cursor
+!urxvt*cursorColor:	 #66ff66
+urxvt*cursorColor: #DCDCCC
+! URLs
+urxvt*.colorUL:    #ffffff
+
+urxvt*scrollColor:        #777777
+urxvt*tintColor:          #222222
+
+!Urxvt options
+urxvt.font:              xft:inconsolata:pixelsize=15
+urxvt*geometry:           160x50
+urxvt*internalBorder:     5
+urxvt*fading:             0
+urxvt*shading:            80
+urxvt*inheritPixmap:      false
+urxvt*depth:              24
+urxvt*saveLines:          32767
+urxvt*visualBell:         true
+urxvt*cursorBlink: 	  false
+urxvt*scrollTtyKeypress:  true
+urxvt*scrollWithBuffer:   false
+urxvt*scrollTtyOutput:    false
+urxvt*scrollBar:          false
+urxvt*scrollstyle:        plain
+urxvt*scrollBar_right:    true
+urxvt*loginShell:         true
+urxvt*termName:           rxvt
+urxvt.cutchars:             "\\ `\"\'()*;<>[]{|}"
+urxvt*print-pipe:         cat > $(echo urxvt.dump.`date +'%Y%M%d%H%m%S'`)
+urxvt*secondaryScroll:    true
+urxvt*mapAlert:           true
+urxvt*utmpInhibit:        true
+urxvt*perl-lib:           /usr/lib/urxvt/perl/
+!URL
+urxvt*perl-ext-common:    default, tabbed
+urxvt*urlLauncher:        conkeror
+urxvt*matcher.button:     1
+!Yankable urls with urxvt-url-select package
+urxvt.perl-ext:      default,url-select
+urxvt.keysym.M-u:    perl:url-select:select_next
+urxvt.underlineURLs: true
+!urxvt tabs settings:
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 2
+URxvt.tabbed.tab-bg: 8
