@@ -1,0 +1,279 @@
+url_remoting_fn = load_url_in_new_buffer;
+
+external_content_handlers.set("application/pdf", "evince");
+
+//set emacs as external editor
+editor_shell_command = "emacsclient -c";
+
+// view source in your editor.
+view_source_use_external_editor = true;
+
+//allow for 'contrib' stuff
+load_paths.unshift("chrome://conkeror-contrib/content/");
+
+// Mode-line
+mode_line_mode(true);
+
+// auto completion in the minibuffer
+minibuffer_auto_complete_default = true;
+url_completion_use_history = true; // should work since bf05c87405
+url_completion_use_bookmarks = true;
+
+// give me new tabs; open buffers (tabs) in the background
+require("new-tabs.js");
+require("clicks-in-new-buffer.js");
+clicks_in_new_buffer_target = OPEN_NEW_BUFFER_BACKGROUND;
+clicks_in_new_buffer_button = 1; //  midclick links in new buffers with
+
+require("mode-line.js");
+// funky icons in the modeline
+require("mode-line-buttons.js");
+mode_line_add_buttons(standard_mode_line_buttons, true);
+
+// we'd like to see the # of buffers being loaded
+add_hook("mode_line_hook", mode_line_adder(loading_count_widget), true);
+
+// but really we'd also like to know how many buffers are present and which is the current
+add_hook("mode_line_hook", mode_line_adder(buffer_count_widget), true);
+
+// we don't need a clock
+remove_hook("mode_line_hook", mode_line_adder(clock_widget));
+
+// some bookmarks
+define_webjump("conk",  "http://conkeror.org");
+define_webjump("ew",    "http://emacswiki.org");
+define_webjump("ip",    "http://instapaper.com");
+
+//Smart links
+define_webjump("so",    "http://stackoverflow.com/search?q=%s");
+define_webjump("yts",   "http://www.youtube.com/results?search_query=%s&aq=f");
+define_webjump("imbd",  "http://www.imdb.com/find?s=all&q=%s");
+define_webjump("dict","http://www.thefreedictionary.com/%s");
+define_webjump("udict", "http://www.urbandictionary.com/define.php?term=%s");
+define_webjump("img", "http://www.google.com/images?q=%s&safe=off", $alternative = "http://www.google.com/imghp?as_q=&safe=off");
+define_webjump("amazon", "http://www.amazon.co.uk/exec/obidos/external-search/?field-keywords=%s&mode=blended");
+define_webjump("wolfram", "http://www.wolframalpha.com/input/?i=%s");
+
+// reload conkerorrc with C-c r
+define_key(default_global_keymap, "C-c r", "reinit");
+
+// Tabs
+require("new-tabs.js");
+
+//Open Middle-Clicked Links in New Buffers
+require("clicks-in-new-buffer.js");
+clicks_in_new_buffer_target = OPEN_NEW_BUFFER_BACKGROUND; // Now buffers open in background.
+''
+//Bind Number Keys to Switch to Buffers 1-10
+function define_switch_buffer_key (key, buf_num) {
+    define_key(default_global_keymap, key,
+               function (I) {
+                   switch_to_buffer(I.window,
+                                    I.window.buffers.get_buffer(buf_num));
+               });
+}
+for (let i = 0; i < 10; ++i) {
+    define_switch_buffer_key(String((i+1)%10), i);
+}
+
+// use M-y to google current selection in new buffer
+// use M-Y to google current selection in new buffer "double-quoted"
+
+// [ref: http://www.mozdev.org/pipermail/conkeror/2009-February/001334.html ]
+// (See also "**c" for selecting text)
+interactive("search-clipboard-contents", "Search in Google the content of the X clipboard (the selected text)",
+              "find-url",
+              $browser_object=
+              function(I) {
+                  return "g "+ read_from_x_primary_selection();
+              }
+);
+interactive("search-clipboard-contents-doublequoted", "Search in Google the content of the X clipboard (the selected text) as a fixed string",
+              "find-url",
+              $browser_object=
+              function(I) {
+                  return "g \""+ read_from_x_primary_selection()+"\"";
+              }
+
+);
+define_key(content_buffer_normal_keymap, "M-y", "search-clipboard-contents");
+define_key(content_buffer_normal_keymap, "M-Y", "search-clipboard-contents-doublequoted");
+define_key(content_buffer_normal_keymap, "d", "follow-new-buffer-background");
+define_key(content_buffer_normal_keymap, "D", "follow-new-buffer");
+define_key(default_global_keymap, "C-x C-m", "execute-extended-command");
+
+// make C-c C-c "submit form"
+define_key(content_buffer_normal_keymap, "C-c C-c", "submit-form");
+
+// make C-x 0 "kill current buffer"
+define_key(default_global_keymap, "C-x 0", "kill-current-buffer");
+
+// make C-x 1 "kill other buffers"
+define_key(content_buffer_normal_keymap, "C-x 1", "kill-other-buffers");
+
+// make C-x 2 "duplicate buffer"
+interactive("duplicate-buffer", "Duplicate buffer",
+            function (I) {
+              browser_object_follow(I.buffer, OPEN_NEW_BUFFER, I.buffer.current_uri.spec);
+            });
+define_key(content_buffer_normal_keymap, "C-x 2", "duplicate-buffer");
+
+//Set download directory
+
+// cwd
+cwd=get_home_directory();
+cwd.append("Downloads");
+
+// Make sure I don't close by accident
+ add_hook("before_quit_hook",
+           function () {
+               var w = get_recent_conkeror_window();
+               var result = (w == null) ||
+                   "y" == (yield w.minibuffer.read_single_character_option(
+                       $prompt = "Quit Conkeror? (y/n)",
+                       $options = ["y", "n"]));
+               yield co_return(result);
+           });
+
+can_kill_last_buffer = false;
+
+// started from
+// http://www.ceondo.com/ecte/2010/09/productivity-conkeror-instapaper-kindle
+// Loïc d'Anterroches, Sep 7, 2010
+
+interactive("instapaper", "Send the current page to InstaPaper.",
+            function (I) {
+                check_buffer(I.buffer, content_buffer);
+		var login_info = get_instapaper_password();
+                let posturl = 'https://www.instapaper.com/api/add?' +
+        'username=' + login_info.username + '&' +
+        'password=' + login_info.password + '&url=' +
+                    encodeURIComponent(I.window.content.location.href) +
+                    '&selection=' +
+                    encodeURIComponent(
+                        yield I.minibuffer.read(
+                            $prompt = "Description (optional): ",
+			    $history = "instapaper-description"
+			));
+                try {
+            var content = yield send_http_request(load_spec({uri: posturl}));
+            if (content.responseText == "201") {
+               I.window.minibuffer.message("InstaPaper ok!");
+            } else {
+               I.window.minibuffer.message("Error.");
+            }
+                } catch (e) {
+                    I.window.minibuffer.message("Error.");
+        }
+        });
+
+interactive("instapaper-link", "Send the current link to InstaPaper.",
+            function (I) {
+              bo = yield read_browser_object(I) ;
+              mylink = load_spec_uri_string(load_spec(encodeURIComponent(bo)));
+              check_buffer(I.buffer, content_buffer);
+	      var login_info = get_instapaper_password();
+              let posturl = 'https://www.instapaper.com/api/add?' +
+                            'username=' + login_info.username + '&' +
+                            'password=' + login_info.password + '&url=' + mylink +
+                '&title=' + encodeURIComponent(
+                                  yield I.minibuffer.read(
+                                  $prompt = "Title (optional): ",
+				  $history = "instapaper-title",
+                  $initial_value = bo.textContent)) +
+                            '&selection=' + encodeURIComponent(
+                                  yield I.minibuffer.read(
+                                  $prompt = "Description (optional): ",
+				  $history = "instapaper-description",
+                  $initial_value = "From: "+ I.buffer.title +" ("+I.window.content.location.href+")"
+));
+                try {
+            var content = yield send_http_request(load_spec({uri: posturl}));
+            if (content.responseText == "201") {
+               I.window.minibuffer.message("InstaPaper ok!");
+            } else {
+               I.window.minibuffer.message("Error.");
+            }
+                } catch (e) {
+                    I.window.minibuffer.message("Error.");
+        }
+            }, $browser_object = browser_object_links);
+
+define_key(default_global_keymap, "C-x i", "instapaper");
+define_key(default_global_keymap, "C-x I", "instapaper-link");
+
+
+
+// google(conkeror password cache) returned http://conkeror.org/PasswordManagement
+// which led to http://conkeror.org/Extensions -> http://conkeror.org/SavedPasswordEditor
+// -> https://addons.mozilla.org/en-US/firefox/files/browse/117335/
+// searching for the class name gets us https://developer.mozilla.org/En/Using_nsILoginManager
+// turns out we can use it directly...
+
+function get_instapaper_password() {
+    var myLoginManager = Components.classes["@mozilla.org/login-manager;1"].getService(Components.interfaces.nsILoginManager);
+    // dug these values out of .conkeror.mozdev.org/conkeror/*.default/signons.sqlite with sqlitebrowser
+    var logins = myLoginManager.findLogins({},
+					   "http://www.instapaper.com", // hostname
+					   "http://www.instapaper.com", // formSubmitURL
+					   ""); // realm
+    return { "username": logins[0].username, "password": logins[0].password };
+}
+
+//Go to gmail, bind it to F1. C-u prefix opens in new buffer.
+interactive("open-gmail", "Go to gmail", "follow",
+            $browser_object = "http://gmail.com/");
+define_key(content_buffer_normal_keymap, "f1", "open-gmail");
+
+//Post to read it later, just insert username and pw.
+interactive("ril", "Read it Later",
+                   function (I) {
+                            let posturl = 'https://readitlaterlist.com/v2/add?username=USERNAME&password=PASSWORD&apikey=0Z4A9y66d8cF2fMu42p9b46Zb8T2vqNq&url=' + I.buffer.display_uri_string + '&title=' + I.buffer.document.title;
+                            yield send_http_request(load_spec({uri: posturl}));
+                            I.window.minibuffer.message("Saved!");
+
+});
+
+//Open read it later
+interactive("open-ril", "Go to Read It Later website", "follow", $browser_object = "http://www.readitlaterlist.com/unread");
+
+//define_key(default_global_keymap, "C-r", "ril");
+
+interactive("open-ril", "Go to Read It Later website", "follow", $browser_object = "http://www.readitlaterlist.com/unread");
+
+//define_key(default_global_keymap, "C-x r", "open-ril");
+
+
+user_pref("general.warnOnAboutConfig", false);
+
+// from _why
+// This one enables Ctrl-Up and Ctrl-Down inside a textarea. So you can stretch the box without reaching for the mouse. How about that!
+ function resize_textarea_up(field) {
+   var h = field.offsetHeight;
+   if (h > 120)
+     field.style.height = (h - 60) + "px";
+ }
+ function resize_textarea_down(field) {
+   field.style.height = (parseInt(field.offsetHeight) + 60) + "px";
+ }
+ interactive(
+   "resize-textarea-up",
+   "Resize a textarea to be smaller.",
+     function (I) { call_on_focused_field(I, resize_textarea_up); }
+ );
+ interactive(
+   "resize-textarea-down",
+   "Resize a textarea to be taller.",
+     function (I) { call_on_focused_field(I, resize_textarea_down); }
+ );
+
+editor_shell_command = 'emacsclient -c';
+
+//enable sessions
+require("session.js");
+
+//Auto-saved sessions reloaded on startup.
+session_auto_save_auto_load = true
+
+// Don't open download window automatically
+remove_hook("download_added_hook", open_download_buffer_automatically);
