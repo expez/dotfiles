@@ -1,0 +1,27 @@
+!Remove Control_R from Control modifier group.
+remove Control = Control_R
+
+!Rebind Control_R to be another Super_L for Xmonad.
+keysym Control_R = Super_L
+
+!Re-add Control_R to Control modifier group.
+add Control = Control_R
+
+!Remove Hyper_L from Mod4, leaving only the super keys there.
+remove Mod4 = Hyper_L
+
+!Add Hyper_L to Mod3.
+add Mod3 = Hyper_L
+
+!Rebind the menu button to Hyper_L to use as xbindkeys modifier.
+keysym Menu = Hyper_L
+
+
+! swap Alt_L and Control_L
+!
+!remove mod1 = Alt_L
+!remove control = Control_L
+!keysym Control_L = Alt_L
+!keysym Alt_L = Control_L
+!add mod1 = Alt_L
+!add control = Control_L
