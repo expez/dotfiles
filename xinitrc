@@ -9,6 +9,12 @@ setxkbmap -layout no -variant nodeadkeys -option ctrl:nocaps
 #Cut keyboard repeat delay in half.
 xset r rate 330 25
 
+#Turn off dpms.
+xset dpms 0 0 0
+
+#Turn off screensaver.
+xset s 0
+
 #Parse xresources
 xrdb ~/.Xresources
 
@@ -27,7 +33,7 @@ urxvtd -q -f -o &
 emacs --daemon &
 
 # Conkeror daemon
-conkeror --daemon &
+#conkeror --daemon &
 
 # Turn on numlock
 numlockx &

@@ -43,8 +43,10 @@ remove_hook("mode_line_hook", mode_line_adder(clock_widget));
 define_webjump("conk",  "http://conkeror.org");
 define_webjump("ew",    "http://emacswiki.org");
 define_webjump("ip",    "http://instapaper.com");
+define_webjump("hn",   "http://news.ycombinator.com")
 
 //Smart links
+define_webjump("w", "http://en.wikipedia.org/w/index.php?search=%s");
 define_webjump("so",    "http://stackoverflow.com/search?q=%s");
 define_webjump("yts",   "http://www.youtube.com/results?search_query=%s&aq=f");
 define_webjump("imbd",  "http://www.imdb.com/find?s=all&q=%s");
@@ -277,3 +279,143 @@ session_auto_save_auto_load = true
 
 // Don't open download window automatically
 remove_hook("download_added_hook", open_download_buffer_automatically);
+
+
+/**
+* hackernews.js -- A Hacker News page-mode for Conkeror
+* (based on pinboard.js)
+*
+* (C) Copyright 2011 Leonardo Etcheverry <leo@kalio.net>
+*
+* Usage: use j,k to move to the next/previous post. RET follows
+* the selected post.
+*
+**/
+
+require("content-buffer.js");
+
+/*
+* User stylesheet
+* Change highlight colors here.
+*/
+register_user_stylesheet(
+    "data:text/css," +
+        escape (
+            "@-moz-document url-prefix(http://news.ycombinator.com/) {" +
+                ".current {" +
+                " // background-color: #CCCCCC !important;" +
+                " // border: 1px dotted #C41 !important;"+
+                " font-weight: bold !important;"+
+                "}" +
+            "}"
+));
+
+/*
+* Select the next item in a circular fashion, according to
+* `direction'. Selecting a post means adding the class "current"
+* to the selected td element.
+*/
+function _hackernews_next(I, direction) {
+  var posts = Array.filter(I.buffer.document.getElementsByClassName("title"), function (p) { return p.getAttribute("align")!= "right" });
+  var cp = posts.filter(function (p) { return (p.className.indexOf("current") >= 0); });
+
+  var current = (cp.length != 0) ? cp[0] : posts[posts.length-1] ;
+  var nexti = (posts.indexOf(current) + direction) % posts.length
+  var next = posts[nexti]
+
+  if (current)
+    dom_remove_class(current, "current");
+  dom_add_class(next, "current");
+
+  return next;
+}
+
+function _hackernews_focus_selected(I, el) {
+  var a = I.buffer.document.evaluate(
+    '//*[contains(@class,"current")]//a',
+    el, null, Ci.nsIDOMXPathResult.FIRST_ORDERED_NODE_TYPE, null);
+
+  // focus the post's link anchor
+  browser_set_element_focus(I.buffer, a.singleNodeValue, false);
+
+  // scroll into view if necessary
+  var boundRect = el.getBoundingClientRect();
+  var win = I.buffer.focused_frame
+  if (boundRect.top < 0 || boundRect.bottom > win.innerHeight)
+    el.scrollIntoView();
+}
+
+/*
+* _on_hackernews_load will be called by the page-mode's $enable callback
+*/
+function _on_hackernews_load(buffer)
+{
+  _hackernews_fix_link_rel(buffer);
+}
+
+/**
+* Add link rel="next" to the "More" link
+* TODO: This should not be necessary once HN fixes its html.
+*/
+function _hackernews_fix_link_rel(buffer)
+{
+  var els = Array.filter(buffer.document.getElementsByClassName("title"), function (t) {return true});
+  var more = buffer.document.evaluate('//a[text()="More"]', buffer.document, null, Ci.nsIDOMXPathResult.FIRST_ORDERED_NODE_TYPE, null);
+  if (more.singleNodeValue) more.singleNodeValue.setAttribute("rel", "next");
+}
+
+
+/*
+* Interactive commands
+*/
+interactive("hackernews-next-post",
+            "Highlight next hackernews item",
+            function (I) { _hackernews_focus_selected(I, _hackernews_next(I, 1 /* down */)); });
+
+interactive("hackernews-prev-post",
+            "Highlight prev hackernews item",
+            function (I) { _hackernews_focus_selected(I, _hackernews_next(I, -1 /* up */)); });
+
+/*
+* keybindings
+*/
+define_keymap("hackernews_keymap", $display_name = "hackernews");
+define_key(hackernews_keymap, "j", "hackernews-next-post");
+define_key(hackernews_keymap, "k", "hackernews-prev-post");
+
+var hackernews_modality = {
+  normal: hackernews_keymap
+};
+
+define_page_mode("hackernews_mode",
+                 build_url_regexp($domain = "news.ycombinator",
+                                  $allow_www = true,
+                                  $tlds = ["com"]),
+                 function enable(buffer) {
+                   buffer.content_modalities.push(hackernews_modality);
+
+                   if (buffer.browser.webProgress.isLoadingDocument)
+                     /* arrange so that _on_hackernews_load callback is
+called once the document is done loading. */
+                     add_hook.call(buffer, "buffer_loaded_hook", _on_hackernews_load);
+                   else
+                     /* call it right now in case the page-mode
+* document is already loaded (ie, someone M-x
+* hackernews-mode manually) */
+                     _on_hackernews_load(buffer);
+                 },
+                 function disable(buffer) {
+                   // unregister hooks
+                   remove_hook.call(buffer, "buffer_loaded_hook", _on_hackernews_load);
+
+                   var i = buffer.content_modalities.indexOf(hackernews_modality);
+                   if (i > -1)
+                     buffer.content_modalities.splice(i, 1);
+                 },
+                 $display_name = "Hacker News",
+                 $doc = "Hacker News page-mode: navigation for Hacker News." );
+
+page_mode_activate(hackernews_mode);
+//provide("hackernews");
+
+//End hacker news mode

@@ -1,4 +1,5 @@
 #-*- shell-script -*-
+
 "emacsclient -c &"
 Mod3 + e
 
@@ -7,9 +8,17 @@ Mod3 + e
 Mod3 + f
 
 #Launch the most recently created flash file in /tmp with VLC
-"vlc $(ls -t1 /tmp/FlashXX* |head -n 1)"
+"vlc $(ls -t1 /tmp/FlashXX* |head -n 1) &"
 Shift + Mod3 + f
 
-#Launch conkeror
-"conkeror"
+"conkeror &"
 Mod3 + c
+
+"slock &"
+Mod3 + l
+
+"vlc http://listen.di.fm/premium/trance.pls?0b8cb0a0b002a904 --volume 192 &"
+Mod3 + t
+
+#"vlc http://listen.di.fm/premium/classictechno.pls?0b8cb0a0b002a904 --volume 192 &"
+#Mod3 + m + e

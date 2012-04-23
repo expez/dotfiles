@@ -90,16 +90,21 @@ urxvt*secondaryScroll:    true
 urxvt*mapAlert:           true
 urxvt*utmpInhibit:        true
 urxvt*perl-lib:           /usr/lib/urxvt/perl/
-!URL
-urxvt*perl-ext-common:    default, tabbed
+!Extensions, url, tabbed, keyboard selection, clipboard.
+urxvt*perl-ext-common:    default,tabbed,keyboard-select,url-select,clipboard
 urxvt*urlLauncher:        conkeror
 urxvt*matcher.button:     1
 !Yankable urls with urxvt-url-select package
-urxvt.perl-ext:      default,url-select
-urxvt.keysym.M-u:    perl:url-select:select_next
 urxvt.underlineURLs: true
 !urxvt tabs settings:
 URxvt.tabbed.tabbar-fg: 2
 URxvt.tabbed.tabbar-bg: 0
 URxvt.tabbed.tab-fg: 2
 URxvt.tabbed.tab-bg: 8
+!urxvt bindings
+urxvt.keysym.M-u:    perl:url-select:select_next
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
