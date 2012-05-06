@@ -83,7 +83,7 @@ alias lx='ll -BX'                   # sort by extension
 alias lz='ll -rS'                   # sort by size
 alias lt='ll -rt'                   # sort by date
 alias lm='la | more'
-
+alias dugs='du1 | grep [0-9]G | sort -n'
 # safety features
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
@@ -115,5 +115,8 @@ alias T="SUDO_EDITOR=\"emacsclient -t -a emacs\" sudoedit"
 alias src="source ~/.bashrc"
 
 alias xevg="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
+
+
+#This can't be an alias, has to be a function.
 #Tell scrot to take a screenshot of the selected area and dump it in ~/shots/argumentFilename
 #alias scrots="scrot -se \'mv '\$f' ~/shots/$1\'"
