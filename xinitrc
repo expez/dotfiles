@@ -15,9 +15,6 @@ xset dpms 0 0 0
 #Turn off screensaver.
 xset s 0
 
-#Turn off mouse acceleration
-xset m 1 4
-
 #Parse xresources
 xrdb ~/.Xresources
 
