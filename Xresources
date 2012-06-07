@@ -6,6 +6,7 @@ Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
 
+Emacs.Font:	Inconsolata-12
 ! terminal colors ------------------------------------------------------------
 !Tomorrow night theme
 !*foreground: #c5c8c6

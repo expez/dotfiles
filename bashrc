@@ -120,3 +120,4 @@ alias xevg="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^
 #This can't be an alias, has to be a function.
 #Tell scrot to take a screenshot of the selected area and dump it in ~/shots/argumentFilename
 #alias scrots="scrot -se \'mv '\$f' ~/shots/$1\'"
+alias blkidc="sudo blkid -c /dev/null"
