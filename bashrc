@@ -119,8 +119,29 @@ alias src="source ~/.bashrc"
 
 alias xevg="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
 
-
-#This can't be an alias, has to be a function.
-#Tell scrot to take a screenshot of the selected area and dump it in ~/shots/argumentFilename
-#alias scrots="scrot -se \'mv '\$f' ~/shots/$1\'"
 alias blkidc="sudo blkid -c /dev/null"
+
+function update-submodules {
+  git stash
+  git submodule foreach "git remote update origin -p"
+  git submodule foreach "git reset --hard origin/master"
+  git commit -am "bump submodule"
+  git stash pop
+}
+
+function ignore {
+  if [ -z "$1" ] ; then
+    cat .gitignore
+  else
+    if git status --porcelain | grep -vE '^[? ]' ; then
+      echo "There is staged work, please commit or reset it"
+      return 1
+    fi
+
+    echo "$1" >> .gitignore
+    git add .gitignore
+    git commit -m "ignore $1"
+  fi
+
+  return 0
+}
