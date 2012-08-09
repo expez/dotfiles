@@ -20,5 +20,5 @@ Mod3 + l
 "vlc http://listen.di.fm/premium/trance.pls?0b8cb0a0b002a904 --volume 256 &"
 Mod3 + t
 
-#"vlc http://listen.di.fm/premium/classictechno.pls?0b8cb0a0b002a904 --volume 192 &"
-#Mod3 + m + e
+"nautilus &"
+Mod3 + n

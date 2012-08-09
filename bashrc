@@ -13,6 +13,9 @@ TERM='rxvt-unicode'
 COLORTERM='rxvt-unicode-256color'
 LANG='en_US.UTF-8'
 
+#Don't treat ! as a special character
+set +H
+
  ##################################################
  # Fancy PWD display function
  ##################################################
