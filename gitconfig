@@ -20,3 +20,6 @@
 
 [credential]
 	helper = cache
+
+[core]
+	editor = egit
