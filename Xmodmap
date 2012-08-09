@@ -15,13 +15,3 @@ add Mod3 = Hyper_L
 
 !Rebind the menu button to Hyper_L to use as xbindkeys modifier.
 keysym Menu = Hyper_L
-
-
-! swap Alt_L and Control_L
-!
-!remove mod1 = Alt_L
-!remove control = Control_L
-!keysym Control_L = Alt_L
-!keysym Alt_L = Control_L
-!add mod1 = Alt_L
-!add control = Control_L
