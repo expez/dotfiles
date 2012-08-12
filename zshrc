@@ -5,7 +5,7 @@ export OH_MY_ZSH_DEBUG="true"
 # from http://skinwalker.wordpress.com/2012/01/24/stderr-zsh/ adds red std err.
 exec 2>>( while read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
 
-source ~/git/dotfiles//antigen.zsh
+source ~/git/dotfiles/antigen/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen-lib
