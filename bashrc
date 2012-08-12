@@ -116,10 +116,9 @@ alias E="SUDO_EDITOR=\"emacsclient -c -a emacs\" sudoedit"
 alias T="SUDO_EDITOR=\"emacsclient -t -a emacs\" sudoedit"
 
 alias src="source ~/.bashrc"
-
 alias xevg="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
-
 alias blkidc="sudo blkid -c /dev/null"
+alias ssh='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet .ssh/id_rsa) && ssh'
 
 function update-submodules {
   git stash
