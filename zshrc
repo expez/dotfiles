@@ -2,11 +2,28 @@
 export ZSH=$HOME/.oh-my-zsh
 export OH_MY_ZSH_DEBUG="true"
 
-ZSH_THEME="Soliah"
+# from http://skinwalker.wordpress.com/2012/01/24/stderr-zsh/ adds red std err.
+exec 2>>( while read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
 
-plugins=(battery dircycle extract git)
+source ~/git/dotfiles//antigen.zsh
 
-source $ZSH/oh-my-zsh.sh
+# Load the oh-my-zsh's library.
+antigen-lib
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen-bundle battery
+antigen-bundle extract
+antigen-bundle git
+antigen-bundle dircycle
+
+# Syntax highlighting bundle.
+antigen-bundle zsh-users/zsh-syntax-highlighting
+
+# Load the theme.
+antigen-theme Soliah
+
+# Tell antigen that you're done.
+antigen-apply
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/home/expez/bin
