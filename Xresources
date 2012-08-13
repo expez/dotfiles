@@ -37,8 +37,7 @@ urxvt*color14:	 #69b8ce
 urxvt*color7:	 #f3ebe2
 urxvt*color15:	 #eeeeee
 
-Cursor
-urxvt*cursorColor:	 #66ff66
+!Cursor
 urxvt*cursorColor: #DCDCCC
 ! URLs
 urxvt*.colorUL:    #ffffff

@@ -1,6 +1,10 @@
 #-*- shell-script -*-
-export ZSH=$HOME/.oh-my-zsh
-export OH_MY_ZSH_DEBUG="true"
+# Skip all this for non-interactive shells
+[[ -z "$PS1" ]] && return
+
+TERM='rxvt-unicode'
+COLORTERM='rxvt-unicode-256color'
+LANG='en_US.UTF-8'
 
 # from http://skinwalker.wordpress.com/2012/01/24/stderr-zsh/ adds red std err.
 exec 2>>( while read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
@@ -8,7 +12,7 @@ exec 2>>( while read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
 source ~/git/dotfiles/antigen/antigen.zsh
 
 # Load the oh-my-zsh's library.
-antigen-lib
+# antigen-lib
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen-bundle battery
@@ -16,26 +20,29 @@ antigen-bundle extract
 antigen-bundle git
 antigen-bundle dircycle
 
-# Syntax highlighting bundle.
+# # Syntax highlighting bundle.
 antigen-bundle zsh-users/zsh-syntax-highlighting
 
-# Load the theme.
-antigen-theme Soliah
+# #additional completions
+antigen-bundle zsh-users/zsh-completions
 
-# Tell antigen that you're done.
+# #history substring search
+antigen-bundle zsh-users/zsh-history-substring-search
+
+# # Tell antigen that you're done.
 antigen-apply
 
-# Customize to your needs...
+source ~/git/dotfiles/zsh-git-prompt/zshrc.sh
+PROMPT='%{$fg[blue]%}%n%{$reset_color%} on %{$fg[red]%}%M%{$reset_color%} in %{$fg[blue]%}%~%b%{$reset_color%}$(git_super_status)
+$ '
+
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/home/expez/bin
 
 #PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-TERM='rxvt-unicode'
-COLORTERM='rxvt-unicode-256color'
-LANG='en_US.UTF-8'
-
-# Skip all this for non-interactive shells
-[[ -z "$PS1" ]] && return
+#enable completions
+autoload -U compinit
+compinit -i
 
 setopt completealiases
 
