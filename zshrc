@@ -7,6 +7,7 @@ COLORTERM='rxvt-unicode-256color'
 LANG='en_US.UTF-8'
 
 # from http://skinwalker.wordpress.com/2012/01/24/stderr-zsh/ adds red std err.
+# This line actually prevents the 'su' command from completing on my system.
 exec 2>>( while read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
 
 source ~/git/dotfiles/antigen/antigen.zsh
@@ -35,18 +36,67 @@ antigen-apply
 source ~/git/dotfiles/zsh-git-prompt/zshrc.sh
 PROMPT='%{$fg[blue]%}%n%{$reset_color%} on %{$fg[red]%}%M%{$reset_color%} in %{$fg[blue]%}%~%b%{$reset_color%}$(git_super_status)
 $ '
-
+# -- %(?..(%?%))%# <- this adds the exit code of the last function, if it failed to the prompt
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/home/expez/bin
 
 #PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-#enable completions
+# enable completions
 autoload -U compinit
 compinit -i
-
+zmodload -i zsh/complist
 setopt completealiases
+setopt complete_in_word
+setopt always_to_end
 
-#zstyle ':completion:*' menu select
+## case-insensitive (all),partial-word and then substring completion
+if [ "x$CASE_SENSITIVE" = "xtrue" ]; then
+  zstyle ':completion:*' matcher-list 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+  unset CASE_SENSITIVE
+else
+  zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+fi
+
+zstyle ':completion:*' list-colors ''
+
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
+
+# use /etc/hosts and known_hosts for hostname completion
+[ -r /etc/ssh/ssh_known_hosts ] && _global_ssh_hosts=(${${${${(f)"$(</etc/ssh/ssh_known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _ssh_hosts=()
+[ -r ~/.ssh/known_hosts ] && _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _ssh_hosts=()
+[ -r /etc/hosts ] && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
+hosts=(
+  "$_global_ssh_hosts[@]"
+  "$_ssh_hosts[@]"
+  "$_etc_hosts[@]"
+  "$HOST"
+  localhost
+)
+zstyle ':completion:*:hosts' hosts $hosts
+
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
+#Fuzzy matching for completions
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
+#Ignore completions for functions I don't have.
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
+#Remove trailing slashes in directory arguments
+zstyle ':completion:*' squeeze-slashes true
+
+#Ignore parent directory
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+
+#Open current line in editor.
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
 
 # FAQ 3.10: Why does zsh not work in an Emacs shell mode any more?
 # http://zsh.sourceforge.net/FAQ/zshfaq03.html#l26
@@ -58,11 +108,17 @@ export HISTSIZE=50000
 export HISTFILE=~/.zsh_history
 export SAVEHIST=30000
 setopt INC_APPEND_HISTORY
-#setopt HIST_IGNORE_ALL_DUPS # Leaving this off so I can use the history to determine new aliases to create.
+setopt hist_ignore_dups
 setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
+setopt hist_allow_clobber
+setopt hist_no_functions
+setopt share_history
 
+setopt no_beep
+setopt auto_cd
+setopt extended_glob
 # Zsh spelling correction options
 setopt CORRECT
 
@@ -76,9 +132,8 @@ setopt AUTO_CONTINUE
 # Don’t write over existing files with >, use >! instead
 setopt NOCLOBBER
 
-# Don’t nice background processes
-setopt NO_BG_NICE
-
+#Don't send HUP to background jobs when the shell is closed
+setopt no_hup
 # Watch other user login/out
 watch=notme
 export LOGCHECK=60
