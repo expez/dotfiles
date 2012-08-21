@@ -6,6 +6,8 @@ TERM='rxvt-unicode'
 COLORTERM='rxvt-unicode-256color'
 LANG='en_US.UTF-8'
 
+source /etc/profile
+
 # from http://skinwalker.wordpress.com/2012/01/24/stderr-zsh/ adds red std err.
 # This line actually prevents the 'su' command from completing on my system.
 exec 2>>( while read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
@@ -37,7 +39,7 @@ source ~/git/dotfiles/zsh-git-prompt/zshrc.sh
 PROMPT='%{$fg[blue]%}%n%{$reset_color%} on %{$fg[red]%}%M%{$reset_color%} in %{$fg[blue]%}%~%b%{$reset_color%}$(git_super_status)
 $ '
 # -- %(?..(%?%))%# <- this adds the exit code of the last function, if it failed to the prompt
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/home/expez/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/home/expez/bin:/home/expez/.cabal/bin
 
 #PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
@@ -172,7 +174,7 @@ alias cd..='cd ..'
 
 # new commands
 alias tf='tail -f'
-alias da='date "+%A, %B %d, %Y [%T]"'
+alias da='date "+%A, %B %d, %Y [%T], %V"'
 alias du1='du --max-depth=1 | sort -n'
 alias hist='history | grep $1'      # requires an argument
 alias openports='netstat --all --numeric --programs --inet --inet6'
