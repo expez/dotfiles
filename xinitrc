@@ -10,10 +10,10 @@ setxkbmap -layout no -variant nodeadkeys -option ctrl:nocaps
 xset r rate 330 25
 
 #Turn off dpms.
-xset dpms 0 0 0
+xset -dpms
 
 #Turn off screensaver.
-xset s 0
+xset s off
 
 #Parse xresources
 xrdb ~/.Xresources
