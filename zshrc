@@ -181,7 +181,7 @@ alias openports='netstat --all --numeric --programs --inet --inet6'
 alias psg='ps -Af | grep $1' # requires an argument
 alias wc='weechat-curses'
 alias 'vnice=nice -n 20 ionice -c 3'
-
+alias pv='ping www.vg.no'
 # Enable color support of ls
 if [[ "$TERM" != "dumb" ]]; then
     if [[ -x `which dircolors` ]]; then
