@@ -273,3 +273,7 @@ ignore() {
 
   return 0
 }
+
+connect() {
+    ssh -t $1expez.com '~/bin/tmuxgo'
+}

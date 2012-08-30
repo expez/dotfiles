@@ -31,3 +31,6 @@ Mod3 + d
 
 "nautilus &"
 Mod3 + n
+
+"changeSoundcard &"
+Mod3 + s
