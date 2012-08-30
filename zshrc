@@ -182,6 +182,7 @@ alias psg='ps -Af | grep $1' # requires an argument
 alias wc='weechat-curses'
 alias 'vnice=nice -n 20 ionice -c 3'
 alias pv='ping www.vg.no'
+alias pandora='sudo ssh -L 80:www.pandora.com:80 -L 443:www.pandora.com:443 expez@50.116.63.15'
 # Enable color support of ls
 if [[ "$TERM" != "dumb" ]]; then
     if [[ -x `which dircolors` ]]; then
@@ -240,7 +241,7 @@ alias -g S='| sort'
 alias -g T='| tail'
 alias -g N='> /dev/null'
 alias -g E='2> /dev/null'
-
+alias -g G='| grep -i $1'
 
 # Quick find
 f() {

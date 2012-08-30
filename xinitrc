@@ -13,7 +13,9 @@ xset r rate 330 25
 xset -dpms
 
 #Turn off screensaver.
+xset s noblank
 xset s off
+
 
 #Parse xresources
 xrdb ~/.Xresources
