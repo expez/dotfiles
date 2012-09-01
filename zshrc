@@ -8,14 +8,7 @@ LANG='en_US.UTF-8'
 
 source /etc/profile
 
-# from http://skinwalker.wordpress.com/2012/01/24/stderr-zsh/ adds red std err.
-# This line actually prevents the 'su' command from completing on my system.
-exec 2>>( while read X; do print "\e[91m${X}\e[0m" > /dev/tty; done & )
-
 source ~/git/dotfiles/antigen/antigen.zsh
-
-# Load the oh-my-zsh's library.
-# antigen-lib
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen-bundle battery
@@ -234,15 +227,16 @@ alias blkidc="sudo blkid -c /dev/null"
 alias ssh='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet .ssh/id_rsa) && ssh'
 
 # Global aliases (expand whatever their position)
-#  e.g. find . E L
+#  e.g. find . ERR L
 alias -g L='| less'
 alias -g H='| head'
 alias -g S='| sort'
 alias -g T='| tail'
 alias -g N='> /dev/null'
-alias -g E='2> /dev/null'
+alias -g ERR='2> /dev/null'
 alias -g G='| grep -i $1'
 
+alias rt='ssh -R 2222:localhost:22 expez@expez.com'
 # Quick find
 f() {
     echo "find . -iname \"*$1*\""
