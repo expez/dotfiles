@@ -1,4 +1,4 @@
-! Xft settings ---------------------------------------------------------------
+! Xft settings
 
 Xft.dpi:        96
 Xft.antialias:  true
@@ -7,7 +7,7 @@ Xft.hinting:    true
 Xft.hintstyle:  hintslight
 
 Emacs.Font:	Inconsolata-12
-! terminal colors ------------------------------------------------------------
+! terminal colors
 !Green on black:
 urxvt*background:	 #000000
 urxvt*foreground:	 #66FF66
