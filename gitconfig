@@ -2,19 +2,19 @@
 	name = Expez
 	email = mrgrandmother@gmail.com
 [diff]
-        tool = ediff
-        guitool = ediff
+     tool = ediff
+     guitool = ediff
 
 [difftool "ediff"]
-        cmd = ~/bin/ediff.sh $LOCAL $REMOTE $MERGED
+    cmd = ~/bin/ediff.sh $LOCAL $REMOTE $MERGED
 	prompt = false
 
 [merge]
-        tool = ediff
+    tool = ediff
 
 [mergetool "ediff"]
-        cmd = ~/bin/ediff.sh $LOCAL $REMOTE $MERGED $BASE
-        trustExitCode = true
+    cmd = ~/bin/ediff.sh $LOCAL $REMOTE $MERGED $BASE
+     trustExitCode = true
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 
@@ -23,3 +23,12 @@
 
 [core]
 	editor = egit
+
+[color]
+	ui = true
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red
+    new = cyan
