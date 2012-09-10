@@ -10,25 +10,15 @@ source /etc/profile
 
 source ~/git/dotfiles/antigen/antigen.zsh
 
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen-bundle battery
-antigen-bundle extract
-antigen-bundle git
-antigen-bundle dircycle
-
-# # Syntax highlighting bundle.
 antigen-bundle zsh-users/zsh-syntax-highlighting
 
-# #additional completions
 antigen-bundle zsh-users/zsh-completions
 
-# #history substring search
 antigen-bundle zsh-users/zsh-history-substring-search
 
-# # Tell antigen that you're done.
 antigen-apply
 
-source ~/git/dotfiles/zsh-git-prompt/zshrc.sh
+source ~/git/zsh-git-prompt/zshrc.sh
 PROMPT='%{$fg[blue]%}%n%{$reset_color%} on %{$fg[red]%}%M%{$reset_color%} in %{$fg[blue]%}%~%b%{$reset_color%}$(git_super_status)
 $ '
 # -- %(?..(%?%))%# <- this adds the exit code of the last function, if it failed to the prompt
@@ -173,8 +163,9 @@ alias hist='history | grep $1'      # requires an argument
 alias openports='netstat --all --numeric --programs --inet --inet6'
 alias psg='ps -Af | grep $1' # requires an argument
 alias wc='weechat-curses'
-alias 'vnice=nice -n 20 ionice -c 3'
+alias vnice='nice -n 20 ionice -c 3'
 alias pv='ping www.vg.no'
+alias cls='clear'
 alias pandora='sudo ssh -L 80:www.pandora.com:80 -L 443:www.pandora.com:443 expez@50.116.63.15'
 # Enable color support of ls
 if [[ "$TERM" != "dumb" ]]; then
@@ -215,11 +206,12 @@ alias pacrmorphans='sudo pacman -Rs $(pacman -Qtdq)' #  Remove orphans
 alias paco="pacman -Qo"                              # '[o]wner'          - determine which package owns a given file
 alias pacf="pacman -Ql"                              # '[f]iles'          - list all files installed by a given package
 alias pacc="sudo pacman -Sc"                         # '[c]lean cache'    - delete all not currently installed package files
-alias pacm="makepkg -fci"                            # '[m]ake'           - make package from PKGBUILD file in current directory
+alias pacm="makepkg -fcis"                           # '[m]ake'           - make package from PKGBUILD file in current directory
 
 # edit file as root using emacs.
 alias E="SUDO_EDITOR=\"emacsclient -c -a emacs\" sudoedit"
 alias T="SUDO_EDITOR=\"emacsclient -t -a emacs\" sudoedit"
+alias ec="emacsclient &"
 
 alias src="source ~/.zshrc"
 alias xevg="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
@@ -285,8 +277,4 @@ ignore() {
   fi
 
   return 0
-}
-
-connect() {
-    ssh -t $1expez.com '~/bin/tmuxgo'
 }
