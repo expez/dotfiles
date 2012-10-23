@@ -4,8 +4,8 @@
 xsetroot -cursor_name left_ptr
 
 #Set keyboard layout: norwegian layout, no dead keys, turn caps lock into another ctrl.
-setxkbmap -layout no -variant nodeadkeys -option ctrl:nocaps
-
+#setxkbmap -layout no -variant nodeadkeys -option ctrl:nocaps
+setxkbmap -layout "us" -option ctrl:nocaps
 #Cut keyboard repeat delay in half.
 xset r rate 330 25
 
