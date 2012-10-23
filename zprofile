@@ -1,6 +1,6 @@
 #-*- shell-script -*-
 
-export PATH=$PATH:~/bin
+export PATH=$PATH:~/bin:~/.cabal/bin
 export EDITOR="emacsclient -c"
 export VISUAL="emacsclient -c"
 
