@@ -33,3 +33,6 @@
     frag = magenta bold
     old = red
     new = cyan
+
+[push]
+	default = simple
