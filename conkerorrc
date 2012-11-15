@@ -44,6 +44,7 @@ define_webjump("conk",  "http://conkeror.org");
 define_webjump("ew",    "http://emacswiki.org");
 define_webjump("ip",    "http://instapaper.com");
 define_webjump("hn",   "http://news.ycombinator.com")
+define_webjump("red",   "http://reddit.com")
 
 //Smart links
 define_webjump("w", "http://en.wikipedia.org/w/index.php?search=%s");
@@ -125,7 +126,7 @@ define_key(content_buffer_normal_keymap, "C-x 2", "duplicate-buffer");
 
 // cwd
 cwd=get_home_directory();
-cwd.append("Downloads");
+cwd.append("downloads");
 
 // Make sure I don't close by accident
  add_hook("before_quit_hook",
