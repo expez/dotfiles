@@ -162,7 +162,6 @@ alias du1='du --max-depth=1 | sort -n'
 alias hist='history | grep $1'      # requires an argument
 alias openports='netstat --all --numeric --programs --inet --inet6'
 alias psg='ps -Af | grep $1' # requires an argument
-alias wc='weechat-curses'
 alias vnice='nice -n 20 ionice -c 3'
 alias pv='ping www.vg.no'
 alias cls='clear'
@@ -231,7 +230,7 @@ alias -g G='| grep -i $1'
 alias rt='ssh -R 2222:localhost:22 expez@expez.com'
 
 # Git aliases.
-alias g='git'
+alias g='hub'
 alias ga='git add'
 alias gp='git push'
 alias gl='git lg'
@@ -278,3 +277,6 @@ ignore() {
 
   return 0
 }
+
+eval "$(fasd --init auto)"
+eval "$(hub alias -s)"
