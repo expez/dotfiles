@@ -280,3 +280,5 @@ ignore() {
 
 eval "$(fasd --init auto)"
 eval "$(hub alias -s)"
+
+export AUTOJUMP_IGNORE_CASE=1
