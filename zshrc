@@ -88,7 +88,7 @@ bindkey '\C-x\C-e' edit-command-line
 [[ $EMACS = t ]] && unsetopt zle
 
 # Zsh settings for history
-export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd:cd ..:cd..:.."
+export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd:cd ..:cd..:..:[ ]*"
 export HISTSIZE=50000
 export HISTFILE=~/.zsh_history
 export SAVEHIST=30000
@@ -163,6 +163,7 @@ alias hist='history | grep $1'      # requires an argument
 alias openports='netstat --all --numeric --programs --inet --inet6'
 alias psg='ps -Af | grep $1' # requires an argument
 alias vnice='nice -n 20 ionice -c 3'
+alias -g rmr='rm -rf'
 alias pv='ping www.vg.no'
 alias cls='clear'
 alias pandora='sudo ssh -L 80:www.pandora.com:80 -L 443:www.pandora.com:443 expez@50.116.63.15'
