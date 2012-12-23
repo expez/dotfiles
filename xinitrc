@@ -28,3 +28,7 @@ emacs --daemon &
 numlockx &
 
 xmonad
+
+if command -v  extMonitor >/dev/null 2>&1; then
+    extMonitor
+fi
