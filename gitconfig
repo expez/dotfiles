@@ -24,6 +24,7 @@
 
 [core]
 	editor = egit
+	pager = less -r
 
 [color]
 	ui = true
@@ -33,3 +34,6 @@
     frag = magenta bold
     old = red
     new = cyan
+
+[push]
+	default = simple
