@@ -5,11 +5,11 @@ Mod3 + e
 
 #Run flashunlink to dump flash files to /tmp
 "LD_PRELOAD=~/programs/flashUnlink/flashunlink.so firefox &"
-Mod3 + f
+Shift + Mod3 + f
 
 #Launch the most recently created flash file in /tmp with VLC
 "vlc $(ls -t1 /tmp/FlashXX* |head -n 1) &"
-Shift + Mod3 + f
+Mod3 + f
 
 "conkeror &"
 Mod3 + c
