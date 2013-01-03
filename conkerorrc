@@ -48,14 +48,16 @@ define_webjump("red",   "http://reddit.com")
 
 //Smart links
 define_webjump("w", "http://en.wikipedia.org/w/index.php?search=%s");
+define_webjump("a", "http://wiki.archlinux.org/w/index.php?search=%s");
+define_webjump("e", "http://expez.com/w/index.php?search=%s");
 define_webjump("so",    "http://stackoverflow.com/search?q=%s");
-define_webjump("yts",   "http://www.youtube.com/results?search_query=%s&aq=f");
-define_webjump("imbd",  "http://www.imdb.com/find?s=all&q=%s");
-define_webjump("dict","http://www.thefreedictionary.com/%s");
-define_webjump("udict", "http://www.urbandictionary.com/define.php?term=%s");
+define_webjump("yt",   "http://www.youtube.com/results?search_query=%s&aq=f");
+define_webjump("imdb",  "http://www.imdb.com/find?s=all&q=%s");
+define_webjump("d","http://www.thefreedictionary.com/%s");
+define_webjump("ud", "http://www.urbandictionary.com/define.php?term=%s");
 define_webjump("img", "http://www.google.com/images?q=%s&safe=off", $alternative = "http://www.google.com/imghp?as_q=&safe=off");
-define_webjump("amazon", "http://www.amazon.co.uk/exec/obidos/external-search/?field-keywords=%s&mode=blended");
-define_webjump("wolfram", "http://www.wolframalpha.com/input/?i=%s");
+define_webjump("am", "http://www.amazon.co.uk/exec/obidos/external-search/?field-keywords=%s&mode=blended");
+define_webjump("wolf", "http://www.wolframalpha.com/input/?i=%s");
 define_webjump("h", "http://www.haskell.org/hoogle/?q=%s");
 
 // reload conkerorrc with C-c r

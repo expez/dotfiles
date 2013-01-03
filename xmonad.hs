@@ -7,7 +7,6 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.Tabbed
 import XMonad.Layout.TabBarDecoration
 import XMonad.Layout.ToggleLayouts
-import XMonad.Hooks.ICCCMFocus
 import XMonad.Hooks.SetWMName
 
 main = do
@@ -18,7 +17,6 @@ main = do
     , layoutHook = myLayoutHooks
     , manageHook = myManageHooks
     , startupHook = setWMName "LG3D"
-    , logHook = takeTopFocus
     } `additionalKeysP` myKeys
 
 myHandleEventHooks = fullscreenEventHook
