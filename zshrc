@@ -226,7 +226,7 @@ alias -g S='| sort'
 alias -g TL='| tail'
 alias -g N='> /dev/null'
 alias -g ERR='2> /dev/null'
-alias -g G='| grep -i $1'
+alias -g G='| egrep -i $1'
 
 alias rt='ssh -R 2222:localhost:22 expez@expez.com'
 
