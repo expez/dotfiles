@@ -7,49 +7,95 @@ Xft.hinting:    true
 Xft.hintstyle:  hintslight
 
 Emacs.Font:	Inconsolata-12
-! terminal colors
-!Green on black:
-urxvt*background:	 #000000
-urxvt*foreground:	 #66FF66
 
-!black
-urxvt*color0:	 #1c1c1c
-urxvt*color8:	 #4d4d4d
-!red
-urxvt*color1:	 #D81860
-urxvt*color9:	 #F00060
-!green
-urxvt*color2:	 #60FF60
-urxvt*color10:	 #70FF70
-!yellow
-urxvt*color3:	 #f9fd75
-urxvt*color11:	 #f9fd80
-!blue
-urxvt*color4:	 #4695c8
-urxvt*color12:	 #5a9dc8
-!magenta
-urxvt*color5:	 #a78edb
-urxvt*color13:	 #b29fdb
-!cyan
-urxvt*color6:	 #43afce
-urxvt*color14:	 #69b8ce
-!white
-urxvt*color7:	 #f3ebe2
-urxvt*color15:	 #eeeeee
+! terminal colors
+! Solarized dark from https://github.com/solarized/xresources/blob/master/solarized
+
+#define S_yellow #b58900
+#define S_orange #cb4b16
+#define S_red #dc322f
+#define S_magenta #d33682
+#define S_violet #6c71c4
+#define S_blue #268bd2
+#define S_cyan #2aa198
+#define S_green #859900
+
+#define S_base03 #002b36
+#define S_base02 #073642
+#define S_base01 #586e75
+#define S_base00 #657b83
+#define S_base0 #839496
+#define S_base1 #93a1a1
+#define S_base2 #eee8d5
+#define S_base3 #fdf6e3
+
+urxvt*background: S_base03
+urxvt*foreground: S_base0
+urxvt*fading: 40
+urxvt*fadeColor: S_base03
+urxvt*cursorColor: S_base1
+urxvt*pointerColorBackground: S_base01
+urxvt*pointerColorForeground: S_base1
+
+urxvt*color0: S_base02
+urxvt*color1: S_red
+urxvt*color2: S_green
+urxvt*color3: S_yellow
+urxvt*color4: S_blue
+urxvt*color5: S_magenta
+urxvt*color6: S_cyan
+urxvt*color7: S_base2
+urxvt*color9: S_orange
+urxvt*color8: S_base03
+urxvt*color10: S_base01
+urxvt*color11: S_base00
+urxvt*color12: S_base0
+urxvt*color13: S_violet
+urxvt*color14: S_base1
+urxvt*color15: S_base3
+
+!Green on black:
+!urxvt*background:	 #000000
+!urxvt*foreground:	 #66FF66
+!
+!!black
+!urxvt*color0:	 #1c1c1c
+!urxvt*color8:	 #4d4d4d
+!!red
+!urxvt*color1:	 #D81860
+!urxvt*color9:	 #F00060
+!!green
+!urxvt*color2:	 #60FF60
+!urxvt*color10:	 #70FF70
+!!yellow
+!urxvt*color3:	 #f9fd75
+!urxvt*color11:	 #f9fd80
+!!blue
+!urxvt*color4:	 #4695c8
+!urxvt*color12:	 #5a9dc8
+!!magenta
+!urxvt*color5:	 #a78edb
+!urxvt*color13:	 #b29fdb
+!!cyan
+!urxvt*color6:	 #43afce
+!urxvt*color14:	 #69b8ce
+!!white
+!urxvt*color7:	 #f3ebe2
+!urxvt*color15:	 #eeeeee
 
 !Cursor
-urxvt*cursorColor: #DCDCCC
+!urxvt*cursorColor: #DCDCCC
 ! URLs
 urxvt*.colorUL:    #ffffff
 
-urxvt*scrollColor:        #777777
-urxvt*tintColor:          #222222
+!urxvt*scrollColor:        #777777
+!urxvt*tintColor:          #222222
 
 !Urxvt options
 urxvt.font:              xft:inconsolata:pixelsize=15
 urxvt*geometry:           160x50
 urxvt*internalBorder:     5
-urxvt*fading:             0
+!urxvt*fading:             0
 urxvt*shading:            80
 urxvt*inheritPixmap:      false
 urxvt*depth:              24
