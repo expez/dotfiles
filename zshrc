@@ -187,7 +187,7 @@ alias src="source ~/.zshrc"
 # Enable color support of ls
 if [[ "$TERM" != "dumb" ]]; then
     if [[ -x `which dircolors` ]]; then
-	eval `dircolors -b`
+	eval `dircolors ~/git/dotfiles/dircolors.256dark`
 	alias ls='ls -hF --color=auto'
     fi
 fi
