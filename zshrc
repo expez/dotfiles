@@ -162,7 +162,13 @@ alias mkdir='mkdir -p -v'
 alias nano='nano -w'
 alias ping='ping -c 5'
 alias ..='cd ..'
+alias ...=' cd ..; cd ..; ls'
+alias ....=' cd ..; cd ..; cd ..; ls'
 alias cd..='cd ..'
+alias reboot="sudo reboot"
+alias poweroff="sudo poweroff"
+alias halt="sudo halt"
+alias ssh='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet .ssh/id_rsa) && ssh'
 
 # new commands
 alias tf='tail -f'
@@ -170,12 +176,14 @@ alias da='date "+%A, %B %d, %Y [%T], %V"'
 alias du1='du --max-depth=1 | sort -n'
 alias hist='history | grep $1'      # requires an argument
 alias openports='netstat --all --numeric --programs --inet --inet6'
-alias psg='ps -Af | grep $1' # requires an argument
+alias psg='ps aux | grep $1' # requires an argument
 alias vnice='nice -n 20 ionice -c 3'
 alias -g rmr='rm -rf'
 alias pv='ping www.vg.no'
 alias cls='clear'
-alias pandora='sudo ssh -L 80:www.pandora.com:80 -L 443:www.pandora.com:443 expez@50.116.63.15'
+alias blkidc="sudo blkid -c /dev/null"
+alias xevg="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
+alias src="source ~/.zshrc"
 # Enable color support of ls
 if [[ "$TERM" != "dumb" ]]; then
     if [[ -x `which dircolors` ]]; then
@@ -222,10 +230,6 @@ alias E="SUDO_EDITOR=\"emacsclient -c -a emacs\" sudoedit"
 alias T="SUDO_EDITOR=\"emacsclient -t -a emacs\" sudoedit"
 alias ec="emacsclient &"
 
-alias src="source ~/.zshrc"
-alias xevg="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
-alias blkidc="sudo blkid -c /dev/null"
-alias ssh='eval $(/usr/bin/keychain --eval --agents ssh -Q --quiet .ssh/id_rsa) && ssh'
 
 # Global aliases (expand whatever their position)
 #  e.g. find . ERR L
@@ -236,8 +240,6 @@ alias -g TL='| tail'
 alias -g N='> /dev/null'
 alias -g ERR='2> /dev/null'
 alias -g G='| egrep -i $1'
-
-alias rt='ssh -R 2222:localhost:22 expez@expez.com'
 
 # Git aliases.
 alias g='hub'
