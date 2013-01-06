@@ -32,7 +32,7 @@ PROMPT='%{$fg[blue]%}%n%{$reset_color%} on %{$fg[red]%}%M%{$reset_color%} in %{$
 $ '
 RPROMPT='%(?..(%?%))'
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/home/expez/bin:/home/expez/.cabal/bin
-
+export GOBIN=/usr/bin/go
 #PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # enable completions
