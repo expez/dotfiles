@@ -11,33 +11,33 @@ Emacs.Font:	Inconsolata-12
 !Terminal colors
 
 !Green on black:
-!urxvt*background:	 #000000
-!urxvt*foreground:	 #66FF66
-!
-!!black
-!urxvt*color0:	 #1c1c1c
-!urxvt*color8:	 #4d4d4d
-!!red
-!urxvt*color1:	 #D81860
-!urxvt*color9:	 #F00060
-!!green
-!urxvt*color2:	 #60FF60
-!urxvt*color10:	 #70FF70
-!!yellow
-!urxvt*color3:	 #f9fd75
-!urxvt*color11:	 #f9fd80
-!!blue
-!urxvt*color4:	 #4695c8
-!urxvt*color12:	 #5a9dc8
-!!magenta
-!urxvt*color5:	 #a78edb
-!urxvt*color13:	 #b29fdb
-!!cyan
-!urxvt*color6:	 #43afce
-!urxvt*color14:	 #69b8ce
-!!white
-!urxvt*color7:	 #f3ebe2
-!urxvt*color15:	 #eeeeee
+urxvt*background:	 #000000
+urxvt*foreground:	 #66FF66
+
+!black
+urxvt*color0:	 #1c1c1c
+urxvt*color8:	 #4d4d4d
+!red
+urxvt*color1:	 #D81860
+urxvt*color9:	 #F00060
+!green
+urxvt*color2:	 #60FF60
+urxvt*color10:	 #70FF70
+!yellow
+urxvt*color3:	 #f9fd75
+urxvt*color11:	 #f9fd80
+!blue
+urxvt*color4:	 #4695c8
+urxvt*color12:	 #5a9dc8
+!magenta
+urxvt*color5:	 #a78edb
+urxvt*color13:	 #b29fdb
+!cyan
+urxvt*color6:	 #43afce
+urxvt*color14:	 #69b8ce
+!white
+urxvt*color7:	 #f3ebe2
+urxvt*color15:	 #eeeeee
 
 !Cursor
 urxvt*cursorColor: #DCDCCC
