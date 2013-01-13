@@ -59,6 +59,7 @@ define_webjump("img", "http://www.google.com/images?q=%s&safe=off", $alternative
 define_webjump("am", "http://www.amazon.co.uk/exec/obidos/external-search/?field-keywords=%s&mode=blended");
 define_webjump("wolf", "http://www.wolframalpha.com/input/?i=%s");
 define_webjump("h", "http://www.haskell.org/hoogle/?q=%s");
+define_webjump("l", "http://l1sp.org/search?q=%s");
 
 // reload conkerorrc with C-c r
 define_key(default_global_keymap, "C-c r", "reinit");
