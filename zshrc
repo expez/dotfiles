@@ -10,6 +10,9 @@ LANG='en_US.UTF-8'
 [ -n "$TMUX" ] && export TERM=screen-256color
 
 export GOBIN=/usr/bin/go
+export GOROOT=/usr/lib/go
+export GOPATH=~/lib/go/
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export GITHUB_USERNAME=Expez
 source /etc/profile
 
@@ -244,6 +247,7 @@ alias -g G='| egrep -i $1'
 
 # Git aliases.
 alias g='hub'
+alias git='hub'
 alias ga='git add'
 alias gp='git push'
 alias gl='git lg'
@@ -253,7 +257,10 @@ alias gdc='git diff --cached'
 alias gm='git commit -m'
 alias gma='git commit -am'
 alias gb='git branch'
-alias gc='git checkout'
+alias gbd='git branch -d'
+alias gch='git checkout'
+alias gc='git commit'
+alias gcan='git commit --amend --no-edit'
 alias gra='git remote add'
 alias grh='git reset HEAD'
 alias grr='git remote rm'
@@ -270,7 +277,7 @@ update-submodules() {
   git stash
   git submodule foreach "git remote update origin -p"
   git submodule foreach "git reset --hard origin/master"
-  git commit -am "bump submodule"
+  git commit -am "Update submodule"
   git stash pop
 }
 
@@ -279,13 +286,13 @@ ignore() {
     cat .gitignore
   else
     if git status --porcelain | grep -vE '^[? ]' ; then
-      echo "There is staged work, please commit or reset it"
+      echo "There is staged work, please commit or reset it."
       return 1
     fi
 
     echo "$1" >> .gitignore
     git add .gitignore
-    git commit -m "ignore $1"
+    git commit -m "Ignore $1."
   fi
 
   return 0
