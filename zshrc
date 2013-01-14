@@ -298,6 +298,8 @@ ignore() {
   return 0
 }
 
+sssh (){ ssh -t "$1" 'tmux attach || tmux new || screen -DR'; }
+
 eval "$(fasd --init auto)"
 eval "$(hub alias -s)"
 
