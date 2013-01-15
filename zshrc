@@ -203,6 +203,7 @@ alias lx='ll -BX'                   # sort by extension
 alias lz='ll -rS'                   # sort by size
 alias lt='ll -rt'                   # sort by date
 alias lm='la | more'
+alias l.='ls -d .* --color=auto'
 alias dugs='du1 | grep [0-9]G | sort -n'
 # safety features
 alias chown='chown --preserve-root'
@@ -210,6 +211,9 @@ alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
 alias ald="echo \"echo 'alias name=\"command\"' >> ~/.zshrc && . ~/.zshrc\""
+
+alias freq='cut -f1 -d" " ~/.zsh_history | sort | uniq -c | sort -nr | head -n 30'
+
 
 #Pacman aliases
 alias pac="sudo pacman -S"                           # default action     - install one or more packages
@@ -244,6 +248,8 @@ alias -g TL='| tail'
 alias -g N='> /dev/null'
 alias -g ERR='2> /dev/null'
 alias -g G='| egrep -i $1'
+
+alias active='grep -v -e "^$" -e"^ *#"'
 
 # Git aliases.
 alias g='hub'
@@ -300,7 +306,34 @@ ignore() {
 
 sssh (){ ssh -t "$1" 'tmux attach || tmux new || screen -DR'; }
 
+extract () {
+    if [ -f $1 ] ; then
+      case $1 in
+        *.tar.bz2)   tar xjf $1     ;;
+        *.tar.gz)    tar xzf $1     ;;
+        *.bz2)       bunzip2 $1     ;;
+        *.rar)       unrar e $1     ;;
+        *.gz)        gunzip $1      ;;
+        *.tar)       tar xf $1      ;;
+        *.tbz2)      tar xjf $1     ;;
+        *.tgz)       tar xzf $1     ;;
+        *.zip)       unzip $1       ;;
+        *.Z)         uncompress $1  ;;
+        *.7z)        7z x $1        ;;
+        *)     echo "'$1' cannot be extracted via extract()" ;;
+         esac
+     else
+         echo "'$1' is not a valid file"
+     fi
+}
+
+function mcd() {
+  mkdir -p "$1" && cd "$1";
+}
+
 eval "$(fasd --init auto)"
 eval "$(hub alias -s)"
 
 export AUTOJUMP_IGNORE_CASE=1
+
+fpath=(~/.zsh/completion $fpath)
