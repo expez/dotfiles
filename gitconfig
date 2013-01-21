@@ -6,6 +6,8 @@
 	editor = egit
 	pager = less -r
 	whitespace = fix,-indent-with-non-tab,-cr-at-eol,trailing-space
+	excludesfile = ~/git/dotfiles/gitexcludes
+	attributesfile = ~/git/dotfiles/gitattributes
 
 [include]
 	path = ~/.githubconfig
@@ -37,6 +39,7 @@
     l5 = log --max-count=5
 	tree = log --graph --pretty=oneline --decorate --color --abbrev-commit
 	stats = shortlog -s -n -e --no-merges
+	ammend = commit --amend -C HEAD
 [credential]
 	helper = cache
 
@@ -64,5 +67,6 @@
 
 [diff "lisp"]
     xfuncname="^(\\((def|test).*)$"
+
 [diff "python"]
     xfuncname="^\\s*(class.*\\(.*\\)|def.*)(\\(|:)"
