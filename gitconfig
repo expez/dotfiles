@@ -40,6 +40,11 @@
 	tree = log --graph --pretty=oneline --decorate --color --abbrev-commit
 	stats = shortlog -s -n -e --no-merges
 	ammend = commit --amend -C HEAD
+	d1 = diff HEAD^1
+	dc = diff --cached
+	wd1 = diff --word-diff=color HEAD^1
+	wd = diff --word-diff=color
+	wdc = diff --word-diff=color --cached
 [credential]
 	helper = cache
 
