@@ -1,9 +1,25 @@
 [user]
 	name = Expez
 	email = mrgrandmother@gmail.com
+
+[core]
+	editor = egit
+	pager = less -r
+	whitespace = fix,-indent-with-non-tab,-cr-at-eol,trailing-space
+	excludesfile = ~/git/dotfiles/gitexcludes
+	attributesfile = ~/git/dotfiles/gitattributes
+
+[include]
+	path = ~/.githubconfig
+
+[apply]
+	whitespace = fix
+
 [diff]
     tool = ediff
     guitool = ediff
+	mnemonicprefix = true
+	renames = copy
 
 [difftool "ediff"]
     cmd = ~/bin/ediff.sh $LOCAL $REMOTE $MERGED
@@ -17,17 +33,30 @@
     trustExitCode = true
     keepBackup = false
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --no-merges
+	lg5 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --no-merges --max-count=5
+    l1 = log --max-count=1
+    l5 = log --max-count=5
+	tree = log --graph --pretty=oneline --decorate --color --abbrev-commit
+	stats = shortlog -s -n -e --no-merges
+	ammend = commit --amend -C HEAD
+	d1 = diff HEAD^1
+	dc = diff --cached
+	wd1 = diff --word-diff=color HEAD^1
+	wd = diff --word-diff=color
+	wdc = diff --word-diff=color --cached
 [credential]
 	helper = cache
 
-[core]
-	editor = egit
-	pager = less -r
-
 [color]
-	ui = true
+	branch = auto
+	diff = auto
+	grep = auto
+	interactive
+	pager = true
+	showbranch = auto
+	status = auto
+	ui = auto
 
 [color "diff"]
     meta = yellow bold
@@ -37,3 +66,12 @@
 
 [push]
 	default = simple
+
+[rebase]
+	autosquash = true
+
+[diff "lisp"]
+    xfuncname="^(\\((def|test).*)$"
+
+[diff "python"]
+    xfuncname="^\\s*(class.*\\(.*\\)|def.*)(\\(|:)"
