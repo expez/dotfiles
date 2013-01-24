@@ -13,7 +13,7 @@ export GOBIN=/usr/bin/go
 export GOROOT=/usr/lib/go
 export GOPATH=~/lib/go/
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-export GITHUB_USERNAME=Expez
+export GITHUB_USER=Expez
 source /etc/profile
 
 source ~/git/dotfiles/antigen/antigen.zsh
@@ -37,7 +37,9 @@ PROMPT='%{$fg[blue]%}%n%{$reset_color%} on %{$fg[red]%}%M%{$reset_color%} in %{$
 $ '
 RPROMPT='%(?..(%?%))'
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/home/expez/bin:/home/expez/.cabal/bin
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin
+PATH=$PATH:$HOME/.gem/ruby/1.9.1/bin
+
 
 # enable completions
 autoload -U compinit
@@ -337,3 +339,5 @@ eval "$(hub alias -s)"
 export AUTOJUMP_IGNORE_CASE=1
 
 fpath=(~/.zsh/completion $fpath)
+
+mwiki () { blah=`echo $@ | sed -e 's/ /_/g'`; dig +short txt $blah.wp.dg.cx; }
