@@ -272,7 +272,7 @@ alias gpu='git pull'
 alias gcl='git clone'
 
 # Quick find
-f() {
+fin() {
     echo "find . -iname \"*$1*\""
     find . -iname "*$1*"
 }
