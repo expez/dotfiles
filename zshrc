@@ -13,7 +13,7 @@ export GOBIN=/usr/bin/go
 export GOROOT=/usr/lib/go
 export GOPATH=~/lib/go/
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-export GITHUB_USERNAME=Expez
+export GITHUB_USER=Expez
 source /etc/profile
 
 source ~/git/dotfiles/antigen/antigen.zsh
@@ -37,7 +37,6 @@ PROMPT='%{$fg[blue]%}%n%{$reset_color%} on %{$fg[red]%}%M%{$reset_color%} in %{$
 $ '
 RPROMPT='%(?..(%?%))'
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/home/expez/bin:/home/expez/.cabal/bin
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # enable completions
 autoload -U compinit
@@ -183,6 +182,7 @@ alias openports='netstat --all --numeric --programs --inet --inet6'
 alias psg='ps aux | grep $1' # requires an argument
 alias vnice='nice -n 20 ionice -c 3'
 alias -g rmr='rm -rf'
+alias -g cpr='cp -r'
 alias pv='ping www.vg.no'
 alias cls='clear'
 alias blkidc="sudo blkid -c /dev/null"
@@ -214,7 +214,6 @@ alias ald="echo \"echo 'alias name=\"command\"' >> ~/.zshrc && . ~/.zshrc\""
 
 alias freq='cut -f1 -d" " ~/.zsh_history | sort | uniq -c | sort -nr | head -n 30'
 
-
 #Pacman aliases
 alias pac="sudo pacman -S"                           # default action     - install one or more packages
 alias pacu="sudo pacman -Syu"                        # '[u]pdate'         - upgrade all packages to their newest version
@@ -237,7 +236,6 @@ alias pacm="makepkg -fcis"                           # '[m]ake'           - make
 alias E="SUDO_EDITOR=\"emacsclient -c -a emacs\" sudoedit"
 alias T="SUDO_EDITOR=\"emacsclient -t -a emacs\" sudoedit"
 alias ec="emacsclient &"
-
 
 # Global aliases (expand whatever their position)
 #  e.g. find . ERR L
@@ -274,7 +272,7 @@ alias gpu='git pull'
 alias gcl='git clone'
 
 # Quick find
-f() {
+fin() {
     echo "find . -iname \"*$1*\""
     find . -iname "*$1*"
 }
@@ -337,3 +335,7 @@ eval "$(hub alias -s)"
 export AUTOJUMP_IGNORE_CASE=1
 
 fpath=(~/.zsh/completion $fpath)
+
+mwiki () { blah=`echo $@ | sed -e 's/ /_/g'`; dig +short txt $blah.wp.dg.cx; }
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

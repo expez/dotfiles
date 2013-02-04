@@ -144,3 +144,5 @@ function ignore {
 
   return 0
 }
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

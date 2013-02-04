@@ -32,6 +32,7 @@
     cmd = ~/bin/ediff.sh $LOCAL $REMOTE $MERGED $BASE
     trustExitCode = true
     keepBackup = false
+
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --no-merges
 	lg5 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --no-merges --max-count=5
@@ -45,6 +46,8 @@
 	wd1 = diff --word-diff=color HEAD^1
 	wd = diff --word-diff=color
 	wdc = diff --word-diff=color --cached
+	gr = grep --break --heading --line-number
+
 [credential]
 	helper = cache
 
@@ -75,3 +78,7 @@
 
 [diff "python"]
     xfuncname="^\\s*(class.*\\(.*\\)|def.*)(\\(|:)"
+
+[grep]
+	lineNumber = true
+	patternType = perl
