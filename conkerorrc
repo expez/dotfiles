@@ -51,6 +51,7 @@ define_webjump("w", "http://en.wikipedia.org/w/index.php?search=%s");
 define_webjump("a", "http://wiki.archlinux.org/index.php?search=%s");
 define_webjump("e", "http://expez.com/w/index.php?search=%s");
 define_webjump("so",    "http://stackoverflow.com/search?q=%s");
+define_webjump("r",    "http://apidock.com/ruby/search?query=%s");
 define_webjump("yt",   "http://www.youtube.com/results?search_query=%s&aq=f");
 define_webjump("imdb",  "http://www.imdb.com/find?s=all&q=%s");
 define_webjump("d","http://www.thefreedictionary.com/%s");

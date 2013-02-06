@@ -235,7 +235,7 @@ alias pacm="makepkg -fcis"                           # '[m]ake'           - make
 # edit file as root using emacs.
 alias E="SUDO_EDITOR=\"emacsclient -c -a emacs\" sudoedit"
 alias T="SUDO_EDITOR=\"emacsclient -t -a emacs\" sudoedit"
-alias ec="emacsclient &"
+alias ec="emacsclient -n"
 
 # Global aliases (expand whatever their position)
 #  e.g. find . ERR L
@@ -245,7 +245,7 @@ alias -g S='| sort'
 alias -g TL='| tail'
 alias -g N='> /dev/null'
 alias -g ERR='2> /dev/null'
-alias -g G='| egrep -i $1'
+alias -g G='| egrep -Hni $1'
 
 alias active='grep -v -e "^$" -e"^ *#"'
 
@@ -339,3 +339,7 @@ fpath=(~/.zsh/completion $fpath)
 mwiki () { blah=`echo $@ | sed -e 's/ /_/g'`; dig +short txt $blah.wp.dg.cx; }
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+function fgr() {
+    find . -iname $1 -exec egrep -Hni $2 '{}' \;
+}
