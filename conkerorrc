@@ -47,7 +47,9 @@ define_webjump("hn",   "http://news.ycombinator.com")
 define_webjump("red",   "http://reddit.com")
 
 //Smart links
+define_webjump("g", "http://www.google.com/search?q=%s");
 define_webjump("w", "http://en.wikipedia.org/w/index.php?search=%s");
+define_webjump("gh", "www.github.com");
 define_webjump("a", "http://wiki.archlinux.org/index.php?search=%s");
 define_webjump("e", "http://expez.com/w/index.php?search=%s");
 define_webjump("so",    "http://stackoverflow.com/search?q=%s");
