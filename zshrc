@@ -1,4 +1,5 @@
 #-*- shell-script -*-
+
 # Skip all this for non-interactive shells
 [[ -z "$PS1" ]] && return
 
@@ -339,6 +340,7 @@ fpath=(~/.zsh/completion $fpath)
 mwiki () { blah=`echo $@ | sed -e 's/ /_/g'`; dig +short txt $blah.wp.dg.cx; }
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
 function fgr() {
     find . -iname $1 -exec egrep -Hni $2 '{}' \;
