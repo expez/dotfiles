@@ -204,8 +204,7 @@ alias lx='ll -BX'                   # sort by extension
 alias lz='ll -rS'                   # sort by size
 alias lt='ll -rt'                   # sort by date
 alias lm='la | more'
-alias l.='ls -d .* --color=auto'
-alias dugs='du1 | grep [0-9]G | sort -n'
+alias dugs='du1 | grep "[0-9]G" | sort -n'
 # safety features
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
