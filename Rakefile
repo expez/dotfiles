@@ -15,7 +15,7 @@ task :install do
     target = File.join(Dir.home, ".#{file}")
     `ln -s #{File.expand_path file} #{target}`
   end
-  `ln -s #{File.expand_path "xmonad.hs"} #{File.join(home, ".xmonad", "xmonad.hs")}`
+  `ln -s #{File.expand_path "xmonad.hs"} #{File.join(Dir.home, ".xmonad", "xmonad.hs")}`
 end
 
 vendor_libs = ["zsh-users/antigen", "expez/zsh-vcs-prompt"]
