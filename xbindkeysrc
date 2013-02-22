@@ -17,23 +17,11 @@ Mod3 + c
 "slock &"
 Shift + Mod3 + l
 
-"vlc http://72.26.216.106:80/trance?0b8cb0a0b002a904 --volume 64 &"
-Mod3 + t
-
-"vlc http://72.26.216.106:80/classictrance?0b8cb0a0b002a904 --volume 64 &"
-Shift + Mod3 + t
-
-"vlc  http://72.26.216.106:80/epictrance?0b8cb0a0b002a904 --volume 64 &"
-Alt + Mod3 + t
-
-"vlc http://72.26.216.106:80/club?0b8cb0a0b002a904 --volume 64 &"
-Mod3 + d
-
 "nautilus &"
 Mod3 + n
 
 "changeSoundcard &"
 Mod3 + s
 
-"changeLayout"
+"changeLayout &"
 Mod3 + l

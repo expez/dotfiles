@@ -3,11 +3,10 @@
 # Skip all this for non-interactive shells
 [[ -z "$PS1" ]] && return
 
+LANG='en_US.UTF-8'
 TERM='rxvt-unicode'
 COLORTERM='rxvt-unicode-256color'
-LANG='en_US.UTF-8'
 
-# for tmux: export 256color
 [ -n "$TMUX" ] && export TERM=screen-256color
 
 export GOBIN=/usr/bin/go
