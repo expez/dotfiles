@@ -34,8 +34,8 @@
     keepBackup = false
 
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --no-merges
-	lg5 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --no-merges --max-count=5
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --no-merges
+	lg5 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --no-merges --max-count=5
     l1 = log --max-count=1
     l5 = log --max-count=5
 	tree = log --graph --pretty=oneline --decorate --color --abbrev-commit
@@ -62,10 +62,10 @@
 	ui = auto
 
 [color "diff"]
-    meta = yellow bold
-    frag = magenta bold
+    meta = yellow
+    frag = magenta
     old = red
-    new = cyan
+    new = green
 
 [push]
 	default = simple
