@@ -8,44 +8,32 @@ Xft.hintstyle:  hintslight
 
 Emacs.Font:	Inconsolata-12
 
-!Terminal colors
-
-!Green on black:
-urxvt*background:	 #000000
-urxvt*foreground:	 #66FF66
-
-!black
-urxvt*color0:	 #1c1c1c
-urxvt*color8:	 #4d4d4d
-!red
-urxvt*color1:	 #D81860
-urxvt*color9:	 #F00060
-!green
-urxvt*color2:	 #60FF60
-urxvt*color10:	 #70FF70
-!yellow
-urxvt*color3:	 #f9fd75
-urxvt*color11:	 #f9fd80
-!blue
-urxvt*color4:	 #4695c8
-urxvt*color12:	 #5a9dc8
-!magenta
-urxvt*color5:	 #a78edb
-urxvt*color13:	 #b29fdb
-!cyan
-urxvt*color6:	 #43afce
-urxvt*color14:	 #69b8ce
-!white
-urxvt*color7:	 #f3ebe2
-urxvt*color15:	 #eeeeee
-
-!Cursor
-urxvt*cursorColor: #DCDCCC
-! URLs
-urxvt*.colorUL:    #ffffff
-
-urxvt*scrollColor:        #777777
-urxvt*tintColor:          #222222
+!Terminal colors: solarized dark
+URxvt*fading:                         30
+URxvt*background:                     #002b36
+URxvt*foreground:                     #657b83
+URxvt*fadeColor:                      #002b36
+URxvt*cursorColor:                    #93a1a1
+URxvt*pointerColorBackground:         #586e75
+URxvt*pointerColorForeground:         #93a1a1
+URxvt*colorUL:                        #859900
+URxvt*colorBD:                        #268bd2
+URxvt*color0:                         #073642
+URxvt*color8:                         #002b36
+URxvt*color1:                         #dc322f
+URxvt*color9:                         #cb4b16
+URxvt*color2:                         #859900
+URxvt*color10:                        #586e75
+URxvt*color3:                         #b58900
+URxvt*color11:                        #657b83
+URxvt*color4:                         #268bd2
+URxvt*color12:                        #839496
+URxvt*color5:                         #d33682
+URxvt*color13:                        #6c71c4
+URxvt*color6:                         #2aa198
+URxvt*color14:                        #93a1a1
+URxvt*color7:                         #eee8d5
+URxvt*color15:                        #fdf6e3
 
 !Urxvt options
 urxvt.font:              xft:inconsolata:pixelsize=15
@@ -59,6 +47,7 @@ urxvt*saveLines:          32767
 urxvt*visualBell:         true
 urxvt*cursorBlink: 	  false
 urxvt*scrollTtyKeypress:  true
+urxvt*jumpScroll:         true
 urxvt*scrollWithBuffer:   false
 urxvt*scrollTtyOutput:    false
 urxvt*scrollBar:          false
