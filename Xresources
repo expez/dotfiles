@@ -70,7 +70,7 @@ urxvt*scrollBar:          false
 urxvt*scrollstyle:        plain
 urxvt*scrollBar_right:    true
 urxvt*loginShell:         true
-urxvt*termName:           rxvt
+urxvt*termName:           rxvt-256color
 urxvt.cutchars:             "\\ `\"\'()*;<>[]{|}"
 urxvt*print-pipe:         cat > $(echo urxvt.dump.`date +'%Y%M%d%H%m%S'`)
 urxvt*secondaryScroll:    true
