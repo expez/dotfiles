@@ -77,7 +77,6 @@ urxvt*secondaryScroll:    true
 urxvt*mapAlert:           true
 urxvt*utmpInhibit:        true
 urxvt*perl-lib:           /usr/lib/urxvt/perl/
-!Extensions, url, tabbed, keyboard selection, clipboard.
 urxvt*perl-ext-common:    default,tabbed,keyboard-select,url-select,clipboard
 urxvt*urlLauncher:        conkeror
 urxvt*matcher.button:     1

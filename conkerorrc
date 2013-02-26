@@ -421,57 +421,6 @@ interactive("user-agent", "Pick a user agent from the list of presets",
                 set_user_agent(user_agents[ua]);
             });
 
-
-/* ---------------------------
-   Make sure you press K to activate dark theme
-   color-theme based on @scottjad
-   ------------------------------ */
-
-// - Stylesheet
-// register_user_stylesheet(
-// make_css_data_uri(["#minibuffer, .mode-line {font-family: Droid Sans; font-size: 12px;}",
-// "#minibuffer-prompt {background: black; color: #93e0e3;}"],
-// $namespace = XUL_NS));
-
-
-//register_user_stylesheet(
-// make_css_data_uri(
-// ["select,option,input { color: #bbb !important; background-color: #333 !important; }"+
-// "code, pre { font-family: DejaVu Sans Mono !important; "+
-// "font-size: 12px !important; }"+
-// "span.__conkeror_hint {"+
-// " line-height: 14px !important;"+
-// ' font-family: Droid !important; '+
-// ' padding: 1px !important;'+
-// ' font-weight: normal !important;'+
-// ' color: green !important; '+
-// " font-size: 10px !important;"+
-// "}\n"]));
-
-// toggle dark mode, adapted from philjackson's darken function
-color_theme_toggle = {};
-
-function global_color_theme(name, key, styles) {
-    interactive_cmd = "toggle-" + name + "-mode";
-    color_theme_toggle[name] = false;
-    interactive(interactive_cmd, "",
-                function (I) {
-                    if (color_theme_toggle[name]) {
-                        for(x in styles) {
-                            unregister_user_stylesheet(styles[x]);
-                        }
-
-                        color_theme_toggle[name] = false;
-                    } else {
-                        for(x in styles) {
-                            register_user_stylesheet(styles[x]);
-                        }
-                        color_theme_toggle[name] = true;
-                    }
-                });
-    define_key(default_global_keymap, key, interactive_cmd);
-}
-
 // - Extensions
 session_pref('extensions.checkCompatibility', false);
 session_pref("xpinstall.whitelist.required", false);
