@@ -21,6 +21,6 @@ set mousehide
 set history=100
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
 set scrolloff=8
-set virtualedit=all
-
-
+set expandtab
+set shiftwidth=2
+set softtabstop=2
