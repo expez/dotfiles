@@ -16,7 +16,7 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export GITHUB_USER=Expez
 source /etc/profile
 
-source ~/git/dotfiles/antigen/antigen.zsh
+source ~/vendor/antigen/antigen.zsh
 
 antigen-bundle zsh-users/zsh-syntax-highlighting
 
@@ -32,7 +32,7 @@ colors
 # Allow for functions in the prompt.
 setopt PROMPT_SUBST
 
-source ~/git/zsh-vcs-prompt/zshrc.sh
+source ~/vendor/zsh-vcs-prompt/zshrc.sh
 PROMPT='%{$fg[blue]%}%n%{$reset_color%} on %{$fg[red]%}%M%{$reset_color%} in %{$fg[blue]%}%~%b%{$reset_color%} $(vcs_super_info)
 $ '
 RPROMPT='%(?..(%?%))'
