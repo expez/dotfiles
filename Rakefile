@@ -1,8 +1,8 @@
-task :default => [:install, :install_vendor]
+task :default => [:install, :init_vendor]
 
 def skip?(file)
-  files_to_skip = ["Rakefile", "xmonad.hs", "dircolors.256dark", "locale.conf", "gitexcludes",
-    "gitattributes"]
+  files_to_skip = ["Rakefile", "xmonad.hs", "dircolors.256dark", "locale.conf",
+    "gitexcludes", "gitattributes"]
     files_to_skip.each{ |f| return true if f.to_s == file }
   false
 end
@@ -15,13 +15,13 @@ task :install do
     target = File.join(Dir.home, ".#{file}")
     `ln -s #{File.expand_path file} #{target}`
   end
-  `ln -s #{file.expand_path "xmonad.hs"} #{File.join(home, ".xmonad", "xmonad.hs")}`
+  `ln -s #{File.expand_path "xmonad.hs"} #{File.join(home, ".xmonad", "xmonad.hs")}`
 end
 
 vendor_libs = ["zsh-users/antigen", "expez/zsh-vcs-prompt"]
 
 desc "Installs 3rd party dependencies to $HOME/vendor"
-task :install_vendor do
+task :init_vendor do
   puts "Installing 3rd party libraries...\n"
   vendor_dir = File.join(Dir.home, "vendor")
   Dir.mkdir(vendor_dir) unless Dir.exists?(vendor_dir)
@@ -34,7 +34,7 @@ task :install_vendor do
 end
 
 desc "Update all 3rd party libraries."
-task :update_vendors do
+task :update_vendor do
   puts "Updating 3rd party libraries...\n"
   dirs = vendor_libs
   dirs.each { |path| path.slice!(/.*\//) }
