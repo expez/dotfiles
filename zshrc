@@ -235,7 +235,6 @@ alias pacm="makepkg -fcis"                           # '[m]ake'           - make
 # edit file as root using emacs.
 alias E="SUDO_EDITOR=\"emacsclient -c -a emacs\" sudoedit"
 alias T="SUDO_EDITOR=\"emacsclient -t -a emacs\" sudoedit"
-alias ec="emacsclient -n"
 
 # Global aliases (expand whatever their position)
 #  e.g. find . ERR L
