@@ -1,0 +1,11 @@
+(setf (logical-pathname-translations "SYS")
+      '(("SYS:SRC;**;*.*.*" #P"/usr/share/sbcl/src/**/*.*")
+        ("SYS:CONTRIB;**;*.*.*" #P"/usr/share/sbcl/contrib/**/*.*")))
+
+;;; The following lines added by ql:add-to-init-file:
+#-quicklisp
+(let ((quicklisp-init (merge-pathnames "quicklisp/setup.lisp"
+                                       (user-homedir-pathname))))
+  (when (probe-file quicklisp-init)
+    (load quicklisp-init)))
+
