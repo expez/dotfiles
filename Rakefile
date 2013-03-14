@@ -2,7 +2,7 @@ task :default => [:install, :init_vendor]
 
 def skip?(file)
   files_to_skip = ["Rakefile", "xmonad.hs", "dircolors.256dark", "locale.conf",
-    "gitexcludes", "gitattributes", "42-asd-link-farm"]
+    "gitexcludes", "gitattributes", "42-asd-link-farm.conf"]
     files_to_skip.each{ |f| return true if f.to_s == file }
   false
 end
@@ -20,7 +20,7 @@ task :install do
 
   dir =  "#{Dir.home}/.config/common-lisp/source-registry-conf.d"
   FileUtils.mkdir_p dir
-  `ln -s #{File.expand_path "42-asd-link-farm"} #{dir}/42-asd-link-farm`
+  `ln -s #{File.expand_path "42-asd-link-farm.conf"} #{dir}/42-asd-link-farm.conf`
 end
 
 vendor_libs = ["zsh-users/antigen", "expez/zsh-vcs-prompt"]
