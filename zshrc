@@ -9,11 +9,11 @@ COLORTERM='rxvt-unicode-256color'
 
 [ -n "$TMUX" ] && export TERM=screen-256color
 
-export GOBIN=/usr/bin/go
+export GOBIN=~/lib/go/bin
 export GOROOT=/usr/lib/go
 export GOPATH=~/lib/go/
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-export GITHUB_USER=Expez
+export GITHUB_USER=expez
 source /etc/profile
 
 source ~/vendor/antigen/antigen.zsh
@@ -38,9 +38,8 @@ $ '
 RPROMPT='%(?..(%?%))'
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/home/expez/bin:/home/expez/.cabal/bin
 
-# enable completions
-autoload -U compinit
-compinit -i
+zstyle :compinstall filename '/home/expez/.zshrc'
+
 zmodload -i zsh/complist
 setopt completealiases
 setopt complete_in_word
@@ -156,7 +155,8 @@ else
 fi
 
 # modified commands
-alias diff='colordiff'              # requires colordiff package
+command -v colordiff >/dev/null 2>&1 && alias diff='colordiff'
+command -v pacman-color >/dev/null 2>&1 && alias pacman='pacman-color'
 alias grep='grep --color=auto'
 alias less='less --ignore-case --LONG-PROMPT --QUIET --chop-long-lines -Sm --RAW-CONTROL-CHARS --quit-if-one-screen --no-init $1'
 alias more='less'
@@ -232,23 +232,16 @@ alias pacf="pacman -Ql"                              # '[f]iles'          - list
 alias pacc="sudo pacman -Sc"                         # '[c]lean cache'    - delete all not currently installed package files
 alias pacm="makepkg -fcis"                           # '[m]ake'           - make package from PKGBUILD file in current directory
 
-# edit file as root using emacs.
-alias E="SUDO_EDITOR=\"emacsclient -c -a emacs\" sudoedit"
-alias T="SUDO_EDITOR=\"emacsclient -t -a emacs\" sudoedit"
-
-# Global aliases (expand whatever their position)
-#  e.g. find . ERR L
 alias -g L='| less'
 alias -g H='| head'
 alias -g S='| sort'
-alias -g TL='| tail'
+alias -g T='| tail'
 alias -g N='> /dev/null'
 alias -g ERR='2> /dev/null'
 alias -g G='| egrep -Hni $1'
 
 alias active='grep -v -e "^$" -e"^ *#"'
 
-# Git aliases.
 alias g='hub'
 alias git='hub'
 alias ga='git add'
@@ -270,7 +263,6 @@ alias grr='git remote rm'
 alias gpu='git pull'
 alias gcl='git clone'
 
-# Quick find
 fin() {
     echo "find . -iname \"*$1*\""
     find . -iname "*$1*"
@@ -330,8 +322,6 @@ function mcd() {
 
 eval "$(fasd --init auto)"
 eval "$(hub alias -s)"
-
-export AUTOJUMP_IGNORE_CASE=1
 
 fpath=(~/.zsh/completion $fpath)
 
