@@ -84,3 +84,5 @@
 	patternType = perl
 [branch]
 	autosetuprebase = always
+[magit]
+	pushremote = expez
