@@ -1,10 +1,10 @@
 [user]
-	name = Expez
-	email = mrgrandmother@gmail.com
+	name = expez
+	email = expez@expez.com
 
 [core]
 	editor = egit
-	pager = less -r
+	pager = less -FRXS
 	whitespace = fix,-indent-with-non-tab,-cr-at-eol,trailing-space
 	excludesfile = ~/git/dotfiles/gitexcludes
 	attributesfile = ~/git/dotfiles/gitattributes
@@ -16,28 +16,28 @@
 	whitespace = fix
 
 [diff]
-    tool = ediff
-    guitool = ediff
+	tool = ediff
+	guitool = ediff
 	mnemonicprefix = true
 	renames = copy
 
 [difftool "ediff"]
-    cmd = ~/bin/ediff.sh $LOCAL $REMOTE $MERGED
+	cmd = ~/bin/ediff.sh $LOCAL $REMOTE $MERGED
 	prompt = false
 
 [merge]
-    tool = ediff
+	tool = ediff
 
 [mergetool "ediff"]
-    cmd = ~/bin/ediff.sh $LOCAL $REMOTE $MERGED $BASE
-    trustExitCode = true
-    keepBackup = false
+	cmd = ~/bin/ediff.sh $LOCAL $REMOTE $MERGED $BASE
+	trustExitCode = true
+	keepBackup = false
 
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --no-merges
 	lg5 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --no-merges --max-count=5
-    l1 = log --max-count=1
-    l5 = log --max-count=5
+	l1 = log --max-count=1
+	l5 = log --max-count=5
 	tree = log --graph --pretty=oneline --decorate --color --abbrev-commit
 	stats = shortlog -s -n -e --no-merges
 	ammend = commit --amend -C HEAD
@@ -62,10 +62,10 @@
 	ui = auto
 
 [color "diff"]
-    meta = yellow
-    frag = magenta
-    old = red
-    new = green
+	meta = yellow
+	frag = magenta
+	old = red
+	new = green
 
 [push]
 	default = simple
@@ -74,15 +74,17 @@
 	autosquash = true
 
 [diff "lisp"]
-    xfuncname="^(\\((def|test).*)$"
+	xfuncname="^(\\((def|test).*)$"
 
 [diff "python"]
-    xfuncname="^\\s*(class.*\\(.*\\)|def.*)(\\(|:)"
+	xfuncname="^\\s*(class.*\\(.*\\)|def.*)(\\(|:)"
 
 [grep]
 	lineNumber = true
 	patternType = perl
+
 [branch]
 	autosetuprebase = always
+
 [magit]
-	pushremote = expez
+	defaultpushremote = expez
