@@ -20,6 +20,7 @@
 	guitool = ediff
 	mnemonicprefix = true
 	renames = copy
+	algorithm = patience
 
 [difftool "ediff"]
 	cmd = ~/bin/ediff.sh $LOCAL $REMOTE $MERGED
@@ -27,6 +28,7 @@
 
 [merge]
 	tool = ediff
+	conflictstyle = diff3
 
 [mergetool "ediff"]
 	cmd = ~/bin/ediff.sh $LOCAL $REMOTE $MERGED $BASE
@@ -40,13 +42,18 @@
 	l5 = log --max-count=5
 	tree = log --graph --pretty=oneline --decorate --color --abbrev-commit
 	stats = shortlog -s -n -e --no-merges
-	ammend = commit --amend -C HEAD
+	amend = commit --amend -C HEAD
 	d1 = diff HEAD^1
 	dc = diff --cached
 	wd1 = diff --word-diff=color HEAD^1
 	wd = diff --word-diff=color
 	wdc = diff --word-diff=color --cached
 	gr = grep --break --heading --line-number
+	assume   = update-index --assume-unchanged
+	unassume = update-index --no-assume-unchanged
+	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+	ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
+	theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
 
 [credential]
 	helper = cache
