@@ -95,3 +95,4 @@
 
 [magit]
 	defaultpushremote = expez
+	extension = wip-save
