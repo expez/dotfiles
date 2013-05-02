@@ -104,6 +104,7 @@ export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd:cd ..:cd..:..:[ ]*"
 export HISTSIZE=50000
 export HISTFILE=~/.zsh_history
 export SAVEHIST=30000
+export HISTCONTROL=removedups
 setopt INC_APPEND_HISTORY
 setopt hist_ignore_dups
 setopt HIST_IGNORE_SPACE
@@ -146,11 +147,11 @@ if [[ -x `which kpdf` ]]; then
     alias -s 'pdf=kfmclient exec'
 else
     if [[ -x `which gpdf` ]]; then
-	alias -s 'pdf=gpdf'
+        alias -s 'pdf=gpdf'
     else
-	if [[ -x `which evince` ]]; then
-	    alias -s 'pdf=evince'
-	fi
+        if [[ -x `which evince` ]]; then
+            alias -s 'pdf=evince'
+        fi
     fi
 fi
 
@@ -192,8 +193,8 @@ alias src="source ~/.zshrc"
 # Enable color support of ls
 if [[ "$TERM" != "dumb" ]]; then
     if [[ -x `which dircolors` ]]; then
-	eval `dircolors ~/git/dotfiles/dircolors.256dark`
-	alias ls='ls -hF --color=auto'
+        eval `dircolors ~/git/dotfiles/dircolors.256dark`
+        alias ls='ls -hF --color=auto'
     fi
 fi
 
@@ -204,6 +205,7 @@ alias lx='ll -BX'                   # sort by extension
 alias lz='ll -rS'                   # sort by size
 alias lt='ll -rt'                   # sort by date
 alias lm='la | more'
+alias lsd='ll | grep "^d"'
 alias dugs='du1 | grep "[0-9]G" | sort -n'
 # safety features
 alias chown='chown --preserve-root'
