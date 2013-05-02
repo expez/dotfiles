@@ -90,9 +90,6 @@
 	lineNumber = true
 	patternType = perl
 
-[branch]
-	autosetuprebase = always
-
 [magit]
 	defaultpushremote = expez
 	extension = wip-save
