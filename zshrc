@@ -29,6 +29,10 @@ antigen-apply
 autoload -U colors
 colors
 
+autoload -U zmv
+autoload -U zrecompile
+[[ -f ~/.zshrc ]] && zrecompile -p ~/.zshrc >/dev/null 2>&1
+
 # Allow for functions in the prompt.
 setopt PROMPT_SUBST
 
