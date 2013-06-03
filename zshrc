@@ -52,10 +52,10 @@ unsetopt nomatch
 
 ## case-insensitive (all),partial-word and then substring completion
 if [ "x$CASE_SENSITIVE" = "xtrue" ]; then
-  zstyle ':completion:*' matcher-list 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-  unset CASE_SENSITIVE
+    zstyle ':completion:*' matcher-list 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+    unset CASE_SENSITIVE
 else
-  zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+    zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 fi
 
 zstyle ':completion:*' list-colors ''
@@ -69,11 +69,11 @@ zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm 
 [ -r ~/.ssh/known_hosts ] && _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _ssh_hosts=()
 [ -r /etc/hosts ] && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
 hosts=(
-  "$_global_ssh_hosts[@]"
-  "$_ssh_hosts[@]"
-  "$_etc_hosts[@]"
-  "$HOST"
-  localhost
+    "$_global_ssh_hosts[@]"
+    "$_ssh_hosts[@]"
+    "$_etc_hosts[@]"
+    "$HOST"
+    localhost
 )
 zstyle ':completion:*:hosts' hosts $hosts
 
@@ -275,55 +275,55 @@ fin() {
 }
 
 update-submodules() {
-  git stash
-  git submodule foreach "git remote update origin -p"
-  git submodule foreach "git reset --hard origin/master"
-  git commit -am "Update submodule"
-  git stash pop
+    git stash
+    git submodule foreach "git remote update origin -p"
+    git submodule foreach "git reset --hard origin/master"
+    git commit -am "Update submodule"
+    git stash pop
 }
 
 ignore() {
-  if [ -z "$1" ] ; then
-    cat .gitignore
-  else
-    if git status --porcelain | grep -vE '^[? ]' ; then
-      echo "There is staged work, please commit or reset it."
-      return 1
+    if [ -z "$1" ] ; then
+        cat .gitignore
+    else
+        if git status --porcelain | grep -vE '^[? ]' ; then
+            echo "There is staged work, please commit or reset it."
+            return 1
+        fi
+
+        echo "$1" >> .gitignore
+        git add .gitignore
+        git commit -m "Ignore $1."
     fi
 
-    echo "$1" >> .gitignore
-    git add .gitignore
-    git commit -m "Ignore $1."
-  fi
-
-  return 0
+    return 0
 }
 
 sssh (){ ssh -t "$1" 'tmux attach || tmux new || screen -DR'; }
 
 extract () {
     if [ -f $1 ] ; then
-      case $1 in
-        *.tar.bz2)   tar xjf $1     ;;
-        *.tar.gz)    tar xzf $1     ;;
-        *.bz2)       bunzip2 $1     ;;
-        *.rar)       unrar e $1     ;;
-        *.gz)        gunzip $1      ;;
-        *.tar)       tar xf $1      ;;
-        *.tbz2)      tar xjf $1     ;;
-        *.tgz)       tar xzf $1     ;;
-        *.zip)       unzip $1       ;;
-        *.Z)         uncompress $1  ;;
-        *.7z)        7z x $1        ;;
-        *)     echo "'$1' cannot be extracted via extract()" ;;
-         esac
-     else
-         echo "'$1' is not a valid file"
-     fi
+        case $1 in
+            *.tar.bz2)   tar xjf $1     ;;
+            *.tar.gz)    tar xzf $1     ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.rar)       unrar e $1     ;;
+            *.gz)        gunzip $1      ;;
+            *.tar)       tar xf $1      ;;
+            *.tbz2)      tar xjf $1     ;;
+            *.tgz)       tar xzf $1     ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1        ;;
+            *)     echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
 }
 
 function mcd() {
-  mkdir -p "$1" && cd "$1";
+    mkdir -p "$1" && cd "$1";
 }
 
 eval "$(fasd --init auto)"
@@ -338,4 +338,9 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 function fgr() {
     find . -iname $1 -exec egrep -Hni $2 '{}' \;
+}
+
+function scrots() {
+    [ -z $1 ] && return 1
+    scrot -s "$HOME/screens/$1.png"
 }
