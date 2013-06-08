@@ -36,8 +36,12 @@
 	keepBackup = false
 
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --no-merges
-	lg5 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --no-merges --max-count=5
+	s = status -sb
+	cp = cherry-pick
+	lasttag = describe --tags --abbrev=0
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --no-merges
+	lg5 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --no-merges --max-count=5
+	plg = log -p --cc --graph --decorate
 	l1 = log --max-count=1
 	l5 = log --max-count=5
 	tree = log --graph --pretty=oneline --decorate --color --abbrev-commit
@@ -54,9 +58,9 @@
 	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
 	ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
 	theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
-
-[credential]
-	helper = cache
+	ls = ls-files
+	authors = shortlog -sn
+	forest = "forest --pretty=format:\"%C(red)%h %C(magenta)(%ar) %C(blue)%an %C(reset)%s\" --style=15"
 
 [color]
 	branch = auto
