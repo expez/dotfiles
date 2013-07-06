@@ -9,3 +9,4 @@
   (when (probe-file quicklisp-init)
     (load quicklisp-init)))
 
+(declaim (optimize (safety 3) (debug 3) (space 0) (speed 0)))
