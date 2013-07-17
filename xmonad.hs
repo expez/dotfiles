@@ -55,6 +55,6 @@ myKeys =
     ]
     ++
     [ (mask ++ "M-" ++ [key], screenWorkspace scr >>= flip whenJust (windows . action))
-         | (key, scr)  <- zip "wer" [3,2,0] -- was [0..] *** change to match your screen order ***
+         | (key, scr)  <- zip "wer" [2,0,1] -- was [0..] *** change to match your screen order ***
          , (action, mask) <- [ (W.view, "") , (W.shift, "S-")]
     ]

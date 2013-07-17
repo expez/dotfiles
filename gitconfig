@@ -60,8 +60,9 @@
 	theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
 	ls = ls-files
 	authors = shortlog -sn
+	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\t=> \\2/' | sort
 	forest = "forest --pretty=format:\"%C(red)%h %C(magenta)(%ar) %C(blue)%an %C(reset)%s\" --style=15"
-
+	ignore=!([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
 [color]
 	branch = auto
 	diff = auto
