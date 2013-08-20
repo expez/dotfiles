@@ -53,46 +53,45 @@ urxvt*color14: S_base1
 urxvt*color15: S_base3
 
 !Urxvt options
-urxvt.font:              xft:inconsolata:pixelsize=15
-urxvt*geometry:           160x50
-urxvt*internalBorder:     5
-urxvt*shading:            80
-urxvt*inheritPixmap:      false
-urxvt*depth:              24
-urxvt*saveLines:          32767
-urxvt*visualBell:         true
-urxvt*cursorBlink: 	  false
-urxvt*scrollTtyKeypress:  true
-urxvt*jumpScroll:         true
-urxvt*scrollWithBuffer:   false
-urxvt*scrollTtyOutput:    false
-urxvt*scrollBar:          false
-urxvt*scrollstyle:        plain
-urxvt*scrollBar_right:    true
-urxvt*loginShell:         true
-urxvt*termName:           rxvt-256color
-urxvt.cutchars:             "\\ `\"\'()*;<>[]{|}"
-urxvt*print-pipe:         cat > $(echo urxvt.dump.`date +'%Y%M%d%H%m%S'`)
-urxvt*secondaryScroll:    true
-urxvt*mapAlert:           true
-urxvt*utmpInhibit:        true
-urxvt*perl-lib:           /usr/lib/urxvt/perl/
-urxvt*perl-ext-common:    default,tabbed,keyboard-select,url-select,clipboard
-urxvt*urlLauncher:        conkeror
-urxvt*matcher.button:     1
-!Yankable urls with urxvt-url-select package
-urxvt.underlineURLs: true
-!urxvt tabs settings:
-URxvt.tabbed.tabbar-fg: 2
-URxvt.tabbed.tabbar-bg: 0
-URxvt.tabbed.tab-fg: 2
-URxvt.tabbed.tab-bg: 8
-!urxvt bindings
-urxvt.keysym.M-u:    perl:url-select:select_next
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keysym.M-s: perl:keyboard-select:search
-URxvt.keysym.M-c:   perl:clipboard:copy
-URxvt.keysym.M-v:   perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-URxvt.clipboard.copycmd:  xclip -i -selection clipboard
-URxvt.clipboard.pastecmd: xclip -o -selection clipboard
+urxvt.font:                  xft:inconsolata:pixelsize=15
+urxvt*geometry:              160x50
+urxvt*internalBorder:        5
+urxvt*shading:               80
+urxvt*inheritPixmap:         false
+urxvt*depth:                 24
+urxvt*saveLines:             32767
+urxvt*visualBell:            true
+urxvt*cursorBlink:           false
+urxvt*scrollTtyKeypress:     true
+urxvt*jumpScroll:            true
+urxvt*scrollWithBuffer:      false
+urxvt*scrollTtyOutput:       false
+urxvt*scrollBar:             false
+urxvt*scrollstyle:           plain
+urxvt*scrollBar_right:       true
+urxvt*loginShell:            true
+urxvt*termName:              rxvt-256color
+urxvt.cutchars:              "\\ `\"\'()*;<>[]{|}"
+urxvt*print-pipe:            cat > $(echo urxvt.dump.`date +'%Y%M%d%H%m%S'`)
+urxvt*secondaryScroll:       true
+urxvt*mapAlert:              true
+urxvt*utmpInhibit:           true
+urxvt*perl-ext-common:       default,tabbed,keyboard-select,url-select,clipboard
+!Yankable                    urls with urxvt-url-select package
+urxvt.url-select.launcher:   conkeror
+urxvt.url-select.underline:  true
+!urxvt                       tabs settings:
+urxvt.tabbed.tabbar-fg:      2
+urxvt.tabbed.tabbar-bg:      0
+urxvt.tabbed.tab-fg:         2
+urxvt.tabbed.tab-bg:         8
+!urxvt                       bindings
+urxvt.keysym.M-u:            perl:url-select:select_next
+urxvt.keysym.M-Escape:       perl:keyboard-select:activate
+urxvt.keysym.M-s:            perl:keyboard-select:search
+urxvt.keysym.M-c:            perl:clipboard:copy
+urxvt.keysym.M-v:            perl:clipboard:paste
+urxvt.keysym.M-C-v:          perl:clipboard:paste_escaped
+urxvt.clipboard.copycmd:     xclip -i -selection clipboard
+urxvt.clipboard.pastecmd:    xclip -o -selection clipboard
+urxvt.clipboard.autocopy:    true
