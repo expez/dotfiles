@@ -1,6 +1,7 @@
+// -*- mode: js2 -*-
 url_remoting_fn = load_url_in_new_buffer;
 
-external_content_handlers.set("application/pdf", "evince");
+external_content_handlers.set("application/pdf", "zathura");
 
 //set emacs as external editor
 editor_shell_command = "emacsclient -c";
