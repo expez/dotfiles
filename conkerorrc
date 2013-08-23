@@ -69,8 +69,10 @@ define_key(default_global_keymap, "C-c r", "reinit");
 
 define_key(default_global_keymap, "j", "cmd_scrollLineDown");
 define_key(default_global_keymap, "k", "cmd_scrollLineUp");
+define_key(default_global_keymap, "C-f", "cmd_scrollPageDown");
+define_key(default_global_keymap, "C-b", "cmd_scrollPageUp");
 
-var my_closed_buffers = new Array();
+var my_closed_buffers = [];
 
 //save the URL of the current buffer before closing it
 interactive("my-close-and-save-current-buffer",
