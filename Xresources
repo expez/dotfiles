@@ -76,15 +76,10 @@ urxvt*print-pipe:            cat > $(echo urxvt.dump.`date +'%Y%M%d%H%m%S'`)
 urxvt*secondaryScroll:       true
 urxvt*mapAlert:              true
 urxvt*utmpInhibit:           true
-urxvt*perl-ext-common:       default,tabbed,keyboard-select,url-select,clipboard
+urxvt*perl-ext-common:       default,keyboard-select,url-select,clipboard
 !Yankable                    urls with urxvt-url-select package
 urxvt.url-select.launcher:   conkeror
 urxvt.url-select.underline:  true
-!urxvt                       tabs settings:
-urxvt.tabbed.tabbar-fg:      2
-urxvt.tabbed.tabbar-bg:      0
-urxvt.tabbed.tab-fg:         2
-urxvt.tabbed.tab-bg:         8
 !urxvt                       bindings
 urxvt.keysym.M-u:            perl:url-select:select_next
 urxvt.keysym.M-Escape:       perl:keyboard-select:activate
