@@ -1,6 +1,7 @@
 import XMonad
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
+import XMonad.Util.Paste
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageHelpers
@@ -51,7 +52,10 @@ myKeys =
     [
     --(("M-p"), spawn "gmrun")
         -- other additional keys
-    (("M-f"), sendMessage (Toggle "Full"))
+      (("M-f"), sendMessage (Toggle "Full"))
+    , (("M-v"), pasteSelection )
+    , (("M-p"), spawn "select-screenshot" )
+    , (("M-P"), spawn "screenshot" )
     ]
     ++
     [ (mask ++ "M-" ++ [key], screenWorkspace scr >>= flip whenJust (windows . action))
