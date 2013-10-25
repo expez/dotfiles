@@ -215,8 +215,7 @@ alias dugs='du1 | grep "[0-9]G" | sort -n'
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
-
-alias ald="echo \"echo 'alias name=\"command\"' >> ~/.zshrc && . ~/.zshrc\""
+alias magit='ec -e "(magit-status \"$(pwd)\")"'
 
 alias freq='cut -f1 -d" " ~/.zsh_history | sort | uniq -c | sort -nr | head -n 30'
 
