@@ -54,8 +54,8 @@ myKeys =
         -- other additional keys
       (("M-f"), sendMessage (Toggle "Full"))
     , (("M-v"), pasteSelection )
-    , (("M-p"), spawn "select-screenshot" )
-    , (("M-P"), spawn "screenshot" )
+    , (("M-s"), spawn "select-screenshot" )
+    , (("M-S"), spawn "screenshot" )
     ]
     ++
     [ (mask ++ "M-" ++ [key], screenWorkspace scr >>= flip whenJust (windows . action))
