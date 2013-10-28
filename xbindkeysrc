@@ -14,6 +14,9 @@ Mod3 + f
 "conkeror &"
 Mod3 + c
 
+"chromium &"
+Shift + Mod3 + c
+
 "slock &"
 Shift + Mod3 + l
 
