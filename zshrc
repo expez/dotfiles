@@ -48,6 +48,7 @@ zmodload -i zsh/complist
 setopt completealiases
 setopt complete_in_word
 setopt always_to_end
+setopt interactive_comments
 unsetopt nomatch
 
 ## case-insensitive (all),partial-word and then substring completion
