@@ -6,7 +6,6 @@
 LANG='en_US.UTF-8'
 TERM='rxvt-unicode'
 COLORTERM='rxvt-unicode-256color'
-
 [ -n "$TMUX" ] && export TERM=screen-256color
 
 export GOBIN=~/lib/go/bin
@@ -156,6 +155,10 @@ else
     else
         if [[ -x `which evince` ]]; then
             alias -s 'pdf=evince'
+        else
+            if [[ -x `which zathura` ]]; then
+                alias -s 'pdf=zathura'
+            fi
         fi
     fi
 fi
