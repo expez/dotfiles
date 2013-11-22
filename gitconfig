@@ -98,3 +98,10 @@
 [magit]
 	defaultpushremote = expez
 	extension = wip-save
+
+[sendemail]
+	smtpencryption = tls
+	smtpserver = smtp.gmail.com
+	smtpuser = expez@expez.com
+	smtpserverport = 587
+	smtpserver = "/usr/bin/msmtp"
