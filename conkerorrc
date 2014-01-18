@@ -63,6 +63,7 @@ define_webjump("wolf", "http://www.wolframalpha.com/input/?i=%s");
 define_webjump("h", "http://www.haskell.org/hoogle/?q=%s");
 define_webjump("l", "http://l1sp.org/search?q=%s");
 define_webjump("lo", "https://lobste.rs");
+define_webjump("c", "http://clojuredocs.org/search?q=%s");
 
 // reload conkerorrc with C-c r
 define_key(default_global_keymap, "C-c r", "reinit");
