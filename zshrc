@@ -17,6 +17,9 @@ export PATH=/usr/class/cs143/cool/bin:$PATH
 source /etc/profile
 export PATH="$HOME/.cask/bin:$PATH"
 source ~/vendor/antigen/antigen.zsh
+if [ -f sh-ext ]; then
+  source sh-ext
+fi
 
 antigen-bundle zsh-users/zsh-syntax-highlighting
 
