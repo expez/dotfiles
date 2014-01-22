@@ -2,7 +2,7 @@
 
 xsetroot -cursor_name left_ptr
 
-setxkbmap -layout "us,no" -option ctrl:nocaps -option grp:alt_shift_toggle
+setxkbmap -layout "us,no" -option ctrl:nocaps
 
 xset -dpms s noblank s off m 0 0 r rate 330 20
 xset -b
