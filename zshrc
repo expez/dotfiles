@@ -43,7 +43,7 @@ source ~/vendor/zsh-vcs-prompt/zshrc.sh
 PROMPT='%{$fg[blue]%}%n%{$reset_color%} on %{$fg[red]%}%M%{$reset_color%} in %{$fg[blue]%}%~%b%{$reset_color%} $(vcs_super_info)
 $ '
 RPROMPT='%(?..(%?%))'
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/home/expez/bin:/home/expez/.cabal/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/home/expez/bin:/home/expez/.cabal/bin:/home/expez/vendor/intellij/bin
 
 zstyle :compinstall filename '/home/expez/.zshrc'
 
