@@ -1,8 +1,8 @@
 #-*- shell-script -*-
 
 export PATH=$PATH:~/bin:~/.cabal/bin
-export EDITOR="emacsclient -c"
-export VISUAL="emacsclient -c"
+export EDITOR="emacsclient"
+export VISUAL="emacsclient"
 
 #Use keychain to manage SSH.
 eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
