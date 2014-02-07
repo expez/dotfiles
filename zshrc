@@ -13,9 +13,14 @@ export GOROOT=/usr/lib/go
 export GOPATH=~/lib/go/
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export GITHUB_USER=expez
-export PATH=/usr/class/cs143/cool/bin:$PATH
 source /etc/profile
-export PATH="$HOME/.cask/bin:$PATH"
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH
+export PATH=/usr/bin/core_perl:$PATH
+export PATH=/home/expez/bin:$PATH
+export PATH=$HOME/.cask/bin:$PATH
+export PATH=/home/expez/.cabal/bin:$PATH
+export PATH=/home/expez/vendor/intellij/bin:$PATH
+export PATH=/home/expez/.gem/ruby/2.0.0/bin:$PATH
 source ~/vendor/antigen/antigen.zsh
 if [ -f sh-ext ]; then
   source sh-ext
@@ -43,7 +48,6 @@ source ~/vendor/zsh-vcs-prompt/zshrc.sh
 PROMPT='%{$fg[blue]%}%n%{$reset_color%} on %{$fg[red]%}%M%{$reset_color%} in %{$fg[blue]%}%~%b%{$reset_color%} $(vcs_super_info)
 $ '
 RPROMPT='%(?..(%?%))'
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl:/home/expez/bin:/home/expez/.cabal/bin:/home/expez/vendor/intellij/bin
 
 zstyle :compinstall filename '/home/expez/.zshrc'
 
