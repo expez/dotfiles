@@ -355,3 +355,6 @@ function scrots() {
     [ -z $1 ] && return 1
     scrot -s "$HOME/screens/$1.png"
 }
+
+# added by travis gem
+[ -f /home/expez/.travis/travis.sh ] && source /home/expez/.travis/travis.sh
