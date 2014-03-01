@@ -22,8 +22,8 @@ export PATH=/home/expez/.cabal/bin:$PATH
 export PATH=/home/expez/vendor/intellij/bin:$PATH
 export PATH=/home/expez/.gem/ruby/2.0.0/bin:$PATH
 source ~/vendor/antigen/antigen.zsh
-if [ -f sh-ext ]; then
-  source sh-ext
+if [ -f secrets.sh ]; then
+  source secrets.sh
 fi
 
 antigen-bundle zsh-users/zsh-syntax-highlighting
