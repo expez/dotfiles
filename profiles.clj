@@ -11,10 +11,10 @@
                        [cider.nrepl.middleware.info/wrap-info
                         cider.nrepl.middleware.inspect/wrap-inspect]
                        :init (do
-                               (require [clojure.tools.namespace.repl
+                               (require '[clojure.tools.namespace.repl
                                          :refer [refresh]])
-                               (require [clojure.repl] :refer :all)
-                               (require [alembic.still :refer [load-project]]))}
+                               (require '[clojure.repl :refer :all])
+                               (require '[alembic.still :refer [load-project]]))}
         :dependencies [[org.clojure/tools.namespace "0.2.4"]
                        [org.clojure/tools.trace "0.7.5"]
                        [alembic "0.2.0"]
