@@ -12,7 +12,7 @@
                         cider.nrepl.middleware.inspect/wrap-inspect]
                        :init (do
                                (require '[clojure.tools.namespace.repl
-                                         :refer [refresh]])
+                                          :refer [refresh]])
                                (require '[clojure.repl :refer :all])
                                (require '[alembic.still :refer [load-project]]))}
         :dependencies [[org.clojure/tools.namespace "0.2.4"]
@@ -20,4 +20,21 @@
                        [alembic "0.2.0"]
                        [slamhound "1.5.1"]
                        [print-foo "0.4.7"]
-                       [com.cemerick/pomegranate "0.3.0"]]}}
+                       [spyscope "0.1.4"]
+                       [im.chit/vinyasa "0.1.8"]
+                       [leiningen "2.3.3"]
+                       [com.cemerick/pomegranate "0.3.0"]]
+        :injections [(require 'spyscope.core)
+                     (require 'vinyasa.inject)
+                     (vinyasa.inject/inject 'clojure.core
+                                            '[[vinyasa.inject inject]
+                                              [vinyasa.pull pull]
+                                              [vinyasa.lein lein]
+                                              [vinyasa.reimport reimport]])
+                     (vinyasa.inject/inject 'clojure.core '>
+                                            '[[cemerick.pomegranate add-classpath get-classpath resources]
+                                              [clojure.tools.namespace.repl refresh]
+                                              [clojure.repl apropos dir doc find-doc source pst
+                                               [root-cause >cause]]
+                                              [clojure.pprint pprint]
+                                              [clojure.java.shell sh]])]}}
