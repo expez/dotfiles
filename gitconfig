@@ -63,6 +63,7 @@
 	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\t=> \\2/' | sort
 	forest = "forest --pretty=format:\"%C(red)%h %C(magenta)(%ar) %C(blue)%an %C(reset)%s\" --style=15"
 	ignore=!([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
+	up = "!git remote update -p; git merge --ff-only @{u}"
 [color]
 	branch = auto
 	diff = auto
