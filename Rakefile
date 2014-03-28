@@ -25,6 +25,10 @@ task :install do
   lein_dir = "#{Dir.home}/.lein"
   FileUtils.mkdir lein_dir unless File.directory? lein_dir
   `ln -s #{File.expand_path "profiles.clj"} #{lein_dir}/profiles.clj`
+
+  ipython_profile_startup_dir = "#{Dir.home}/.config/ipython/profile_default/startup"
+  FileUtils.mkdir ipython_profile_startup_dir unless File.directory? ipython_profile_startup_dir
+  `ln -s #{File.expand_path "solarized-matplotlib.py"} #{ipython_profile_startup_dir}/solarized-matplotlib.py`
 end
 
 vendor_libs = ["zsh-users/antigen", "expez/zsh-vcs-prompt"]
