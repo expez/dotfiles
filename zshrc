@@ -358,3 +358,7 @@ function scrots() {
 
 # added by travis gem
 [ -f /home/expez/.travis/travis.sh ] && source /home/expez/.travis/travis.sh
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/git
+[ -f /usr/bin/virtualenvwrapper.sh ] && source /usr/bin/virtualenvwrapper.sh
