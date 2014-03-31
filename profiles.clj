@@ -9,7 +9,8 @@
                   [org.timmc/nephila "0.2.0"]]
         :repl-options {:nrepl-middleware
                        [cider.nrepl.middleware.info/wrap-info
-                        cider.nrepl.middleware.inspect/wrap-inspect]
+                        cider.nrepl.middleware.inspect/wrap-inspect
+                        ritz.nrepl.middleware.javadoc/wrap-javadoc]
                        :init (do
                                (require '[clojure.tools.namespace.repl
                                           :refer [refresh]])
@@ -22,6 +23,7 @@
                        [print-foo "0.4.7"]
                        [spyscope "0.1.4"]
                        [im.chit/vinyasa "0.1.8"]
+                       [ritz/ritz-nrepl-middleware "0.7.0"]
                        [leiningen "2.3.3"]
                        [com.cemerick/pomegranate "0.3.0"]]
         :injections [(require 'spyscope.core)
