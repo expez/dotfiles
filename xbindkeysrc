@@ -6,9 +6,6 @@ Mod3 + e
 "firefox &"
 Shift + Mod3 + f
 
-"vlc $(ls -t1 /tmp/FlashXX* |head -n 1) &"
-Mod3 + f
-
 "conkeror &"
 Mod3 + c
 
