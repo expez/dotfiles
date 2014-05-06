@@ -4,7 +4,7 @@
                   [lein-ancient "0.5.4"]
                   [lein-exec "0.3.2"]
                   [lein-simpleton "1.2.0"]
-                  [cider/cider-nrepl "0.1.0-SNAPSHOT"]
+                  [cider/cider-nrepl "0.7.0-SNAPSHOT"]
                   [lein-difftest "2.0.0"]
                   [org.timmc/nephila "0.2.0"]]
         :repl-options {:nrepl-middleware
