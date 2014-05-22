@@ -21,7 +21,6 @@
                        [org.clojure/tools.trace "0.7.5"]
                        [alembic "0.2.0"]
                        [slamhound "1.5.2"]
-                       [javert "0.2.0-SNAPSHOT"]
                        [print-foo "0.4.7"]
                        [spyscope "0.1.4"]
                        [im.chit/vinyasa "0.1.8"]
