@@ -279,6 +279,14 @@ alias grh='git reset HEAD'
 alias grr='git remote rm'
 alias gpu='git pull'
 alias gcl='git clone'
+alias git-add-modified="git status | grep modified | cut -d':' -f2 | xargs git add"
+alias git-add-deleted="git status | grep deleted | cut -d':' -f2 | xargs git add"
+alias git-rm-modified="git status | grep modified | cut -d':' -f2 | xargs git rm"
+alias git-rm-deleted="git status | grep deleted | cut -d':' -f2 | xargs git rm"
+
+# tar
+alias tarc="tar -czvf"
+alias tarx="tar -xzvf"
 
 fin() {
     echo "find . -iname \"*$1*\""
