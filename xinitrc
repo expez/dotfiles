@@ -32,4 +32,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
+# Workaround For Hardware Accelerated Video Glitching On NVidia
+hsetroot -solid "#000000" # Stops The Gray Background
+xcompmgr -n &
+
 xmonad
