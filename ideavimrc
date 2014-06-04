@@ -1,0 +1,6 @@
+:map <C-e> $
+:map <C-a> ^
+:imap <C-e> <Esc>$la
+:imap <C-a> <Esc>^i
+set ignorecase
+set smartcase
