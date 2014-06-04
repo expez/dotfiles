@@ -25,3 +25,6 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set virtualedit=all
+set ignorecase
+set smartcase
+set incsearch
