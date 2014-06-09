@@ -9,9 +9,12 @@
                   [lein-difftest "2.0.0"]
                   [org.timmc/nephila "0.2.0"]]
         :repl-options {:nrepl-middleware
-                       [cider.nrepl.middleware.info/wrap-info
+                       [cider.nrepl.middleware.classpath/wrap-classpath
+                        cider.nrepl.middleware.complete/wrap-complete
+                        cider.nrepl.middleware.info/wrap-info
                         cider.nrepl.middleware.inspect/wrap-inspect
-                        ritz.nrepl.middleware.javadoc/wrap-javadoc]
+                        cider.nrepl.middleware.stacktrace/wrap-stacktrace
+                        cider.nrepl.middleware.trace/wrap-trace]
                        :init (do
                                (require '[clojure.tools.namespace.repl
                                           :refer [refresh]])
