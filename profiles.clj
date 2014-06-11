@@ -6,6 +6,7 @@
                   [lein-exec "0.3.2"]
                   [lein-simpleton "1.2.0"]
                   [cider/cider-nrepl "0.7.0-SNAPSHOT"]
+                  [com.aphyr/prism "0.1.1"]
                   [lein-vanity "0.2.0"]
                   [lein-difftest "2.0.0"]
                   [org.timmc/nephila "0.2.0"]]
@@ -30,6 +31,7 @@
                        [im.chit/vinyasa "0.1.8"]
                        [ritz/ritz-nrepl-middleware "0.7.0"]
                        [leiningen "2.3.3"]
+                       [com.aphyr/prism "0.1.1"]
                        [com.cemerick/pomegranate "0.3.0"]]
         :injections [(require 'spyscope.core)
                      (require 'vinyasa.inject)
