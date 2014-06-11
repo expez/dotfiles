@@ -28,3 +28,9 @@ set virtualedit=all
 set ignorecase
 set smartcase
 set incsearch
+
+noremap <C-e> $
+inoremap <C-e> <C-o> $
+
+noremap <C-a> 0
+inoremap <C-e> <C-o> 0
