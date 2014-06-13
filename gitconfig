@@ -44,6 +44,7 @@
 	plg = log -p --cc --graph --decorate
 	l1 = log --max-count=1
 	l5 = log --max-count=5
+	l10 = log --max-count=10
 	tree = log --graph --pretty=oneline --decorate --color --abbrev-commit
 	stats = shortlog -s -n -e --no-merges
 	amend = commit --amend -C HEAD
