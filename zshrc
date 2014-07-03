@@ -370,3 +370,6 @@ function scrots() {
 # export WORKON_HOME=$HOME/.virtualenvs
 # export PROJECT_HOME=$HOME/git
 # [ -f /usr/bin/virtualenvwrapper.sh ] && source /usr/bin/virtualenvwrapper.sh
+
+# stop accidental freezing when you click ctrl-s
+stty -ixon 
