@@ -249,6 +249,8 @@ alias pacf="pacman -Ql"                              # '[f]iles'          - list
 alias pacc="sudo pacman -Sc"                         # '[c]lean cache'    - delete all not currently installed package files
 alias pacm="makepkg -fcis"                           # '[m]ake'           - make package from PKGBUILD file in current directory
 
+alias fpacnew='sudo updatedb && locate -e --regex "\.pac(new|orig|save)$"'
+
 alias -g L='| less'
 alias -g H='| head'
 alias -g S='| sort'
