@@ -5,7 +5,7 @@
 [core]
 	editor = egit
 	pager = less -FRXS
-	whitespace = fix,-indent-with-non-tab,-cr-at-eol,trailing-space
+	whitespace = -indent-with-non-tab,-cr-at-eol,trailing-space
 	excludesfile = ~/git/dotfiles/gitexcludes
 	attributesfile = ~/git/dotfiles/gitattributes
 

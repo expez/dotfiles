@@ -227,9 +227,9 @@ alias dugs='du1 | grep "[0-9]G" | sort -n'
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
-alias magit='ec -e "(magit-status \"$(pwd)\")"'
 
 alias freq='cut -f1 -d" " ~/.zsh_history | sort | uniq -c | sort -nr | head -n 30'
+alias magit='ec -e "(magit-status \"$(pwd)\")"'
 
 #Pacman aliases
 alias pac="sudo pacman -S"                           # default action     - install one or more packages
