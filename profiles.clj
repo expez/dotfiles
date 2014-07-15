@@ -9,6 +9,7 @@
                   [com.aphyr/prism "0.1.1"]
                   [lein-vanity "0.2.0"]
                   [lein-difftest "2.0.0"]
+                  [pjstadig/humane-test-output "0.6.0"]
                   [org.timmc/nephila "0.2.0"]]
         :repl-options {:nrepl-middleware
                        [cider.nrepl.middleware.apropos/wrap-apropos
@@ -50,4 +51,6 @@
                                               [clojure.repl apropos dir doc find-doc source pst
                                                [root-cause >cause]]
                                               [clojure.pprint pprint]
-                                              [clojure.java.shell sh]])]}}
+                                              [clojure.java.shell sh]])
+                     (require 'pjstadig.humane-test-output)
+                     (pjstadig.humane-test-output/activate!)]}}
