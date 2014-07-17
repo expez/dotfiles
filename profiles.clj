@@ -23,6 +23,7 @@
                         cider.nrepl.middleware.test/wrap-test
                         cider.nrepl.middleware.trace/wrap-trace]
                        :init (do
+                               (set! *print-length* 200)
                                (require '[clojure.tools.namespace.repl
                                           :refer [refresh]])
                                (require '[clojure.repl :refer :all])
