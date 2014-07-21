@@ -9,7 +9,7 @@
                   [com.aphyr/prism "0.1.1"]
                   [lein-vanity "0.2.0"]
                   [lein-difftest "2.0.0"]
-                  [pjstadig/humane-test-output "0.6.0"]
+                  [com.jakemccrary/lein-test-refresh "0.5.0"]
                   [org.timmc/nephila "0.2.0"]]
         :repl-options {:nrepl-middleware
                        [cider.nrepl.middleware.apropos/wrap-apropos
@@ -32,6 +32,7 @@
                        [org.clojure/tools.trace "0.7.5"]
                        [alembic "0.2.0"]
                        [slamhound "1.5.2"]
+                       [pjstadig/humane-test-output "0.6.0"]
                        [print-foo "0.4.7"]
                        [spyscope "0.1.4"]
                        [leiningen #=(leiningen.core.main/leiningen-version)]
