@@ -36,9 +36,8 @@
                        [print-foo "0.4.7"]
                        [spyscope "0.1.4"]
                        [leiningen #=(leiningen.core.main/leiningen-version)]
-                       [im.chit/vinyasa "0.2.0"]
+                       [im.chit/vinyasa "0.2.1"]
                        [ritz/ritz-nrepl-middleware "0.7.0"]
-                       [leiningen "2.3.3"]
                        [com.aphyr/prism "0.1.1"]
                        [com.cemerick/pomegranate "0.3.0"]]
         :injections [(require 'spyscope.core)
