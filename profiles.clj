@@ -29,30 +29,40 @@
                                (require '[clojure.repl :refer :all])
                                (require '[alembic.still :refer [load-project]]))}
         :dependencies [[org.clojure/tools.namespace "0.2.4"]
-                       [org.clojure/tools.trace "0.7.5"]
+                       [org.clojure/tools.trace "0.7.8"]
                        [alembic "0.2.0"]
                        [slamhound "1.5.2"]
                        [pjstadig/humane-test-output "0.6.0"]
                        [print-foo "0.4.7"]
                        [spyscope "0.1.4"]
                        [leiningen #=(leiningen.core.main/leiningen-version)]
-                       [im.chit/vinyasa "0.2.1"]
+                       [im.chit/vinyasa "0.2.2"]
                        [ritz/ritz-nrepl-middleware "0.7.0"]
                        [com.aphyr/prism "0.1.1"]
                        [com.cemerick/pomegranate "0.3.0"]]
         :injections [(require 'spyscope.core)
                      (require 'vinyasa.inject)
-                     (vinyasa.inject/inject 'clojure.core
-                                            '[[vinyasa.inject inject]
-                                              [vinyasa.pull pull]
-                                              [vinyasa.lein lein]
-                                              [vinyasa.reimport reimport]])
-                     (vinyasa.inject/inject 'clojure.core '>
-                                            '[[cemerick.pomegranate add-classpath get-classpath resources]
-                                              [clojure.tools.namespace.repl refresh]
-                                              [clojure.repl apropos dir doc find-doc source pst
-                                               [root-cause >cause]]
-                                              [clojure.pprint pprint]
-                                              [clojure.java.shell sh]])
+                     (inject/in ;; the default injected namespace is `.`
+
+                      ;; note that `:refer, :all and :exclude can be used
+                      [vinyasa.inject :refer [inject [in inject-in]]]
+                      [vinyasa.lein :exclude [*project*]]
+
+                      ;; imports all functions in vinyasa.pull
+                      [vinyasa.pull :all]
+
+                      ;; same as [cemerick.pomegranate :refer [add-classpath
+                      ;;          get-classpath resources]]
+                      [cemerick.pomegranate add-classpath get-classpath resources]
+
+                      ;; inject into clojure.core
+                      clojure.core
+                      [iroh.core .> .? .* .% .%>]
+
+                      ;; inject into clojure.core with prefix
+                      clojure.core >
+                      [clojure.pprint pprint]
+                      [clojure.java.shell sh])
+
                      (require 'pjstadig.humane-test-output)
                      (pjstadig.humane-test-output/activate!)]}}
