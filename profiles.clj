@@ -31,13 +31,11 @@
         :dependencies [[org.clojure/tools.namespace "0.2.4"]
                        [org.clojure/tools.trace "0.7.8"]
                        [alembic "0.2.0"]
-                       [slamhound "1.5.2"]
                        [pjstadig/humane-test-output "0.6.0"]
                        [print-foo "0.4.7"]
                        [spyscope "0.1.4"]
                        [leiningen #=(leiningen.core.main/leiningen-version)]
                        [im.chit/vinyasa "0.2.2"]
-                       [ritz/ritz-nrepl-middleware "0.7.0"]
                        [com.aphyr/prism "0.1.1"]
                        [com.cemerick/pomegranate "0.3.0"]]
         :injections [(require 'spyscope.core)
