@@ -5,41 +5,28 @@
                   [lein-describe "0.2.0"]
                   [lein-exec "0.3.2"]
                   [lein-simpleton "1.2.0"]
-                  [cider/cider-nrepl "0.7.0-SNAPSHOT"]
-                  [com.aphyr/prism "0.1.1"]
+                  [cider/cider-nrepl "0.8.0-SNAPSHOT"]
                   [lein-vanity "0.2.0"]
-                  [lein-difftest "2.0.0"]
                   [com.jakemccrary/lein-test-refresh "0.5.0"]
                   [org.timmc/nephila "0.2.0"]]
-        :repl-options {:nrepl-middleware
-                       [cider.nrepl.middleware.apropos/wrap-apropos
-                        cider.nrepl.middleware.classpath/wrap-classpath
-                        cider.nrepl.middleware.complete/wrap-complete
-                        cider.nrepl.middleware.info/wrap-info
-                        cider.nrepl.middleware.inspect/wrap-inspect
-                        cider.nrepl.middleware.macroexpand/wrap-macroexpand
-                        cider.nrepl.middleware.resource/wrap-resource
-                        cider.nrepl.middleware.stacktrace/wrap-stacktrace
-                        cider.nrepl.middleware.test/wrap-test
-                        cider.nrepl.middleware.trace/wrap-trace]
+        :repl-options {:nrepl-middleware [io.aviso.nrepl/pretty-middleware]
                        :init (do
                                (set! *print-length* 200)
                                (require '[clojure.tools.namespace.repl
                                           :refer [refresh]])
-                               (require '[clojure.repl :refer :all])
-                               (require '[alembic.still :refer [load-project]]))}
-        :dependencies [[org.clojure/tools.namespace "0.2.4"]
-                       [org.clojure/tools.trace "0.7.8"]
-                       [alembic "0.2.0"]
+                               (require '[clojure.repl :refer :all]))}
+        :dependencies [[org.clojure/tools.trace "0.7.8"]
                        [pjstadig/humane-test-output "0.6.0"]
                        [print-foo "0.4.7"]
                        [spyscope "0.1.4"]
+                       [org.clojure/tools.namespace "0.2.5"]
                        [leiningen #=(leiningen.core.main/leiningen-version)]
+                       [im.chit/iroh "0.1.11"]
+                       [io.aviso/pretty "0.1.10"]
                        [im.chit/vinyasa "0.2.2"]
-                       [com.aphyr/prism "0.1.1"]
                        [com.cemerick/pomegranate "0.3.0"]]
-        :injections [(require 'spyscope.core)
-                     (require 'vinyasa.inject)
+        :injections [(require '[vinyasa.inject :as inject])
+                     (require 'io.aviso.repl)
                      (inject/in ;; the default injected namespace is `.`
 
                       ;; note that `:refer, :all and :exclude can be used
