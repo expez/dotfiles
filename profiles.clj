@@ -18,7 +18,7 @@
         :dependencies [[org.clojure/tools.trace "0.7.8"]
                        [pjstadig/humane-test-output "0.6.0"]
                        [print-foo "0.4.7"]
-                       [spyscope "0.1.4"]
+                       [spyscope "0.1.5"]
                        [org.clojure/tools.namespace "0.2.5"]
                        [leiningen #=(leiningen.core.main/leiningen-version)]
                        [im.chit/iroh "0.1.11"]
