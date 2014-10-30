@@ -47,6 +47,8 @@
                       ;; inject into clojure.core with prefix
                       clojure.core >
                       [clojure.pprint pprint]
+                      [clojure.tools.trace trace deftrace
+                       trace-forms trace-ns trace-vars]
                       [clojure.java.shell sh])
 
                      (require 'pjstadig.humane-test-output)
