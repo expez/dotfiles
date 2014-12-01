@@ -5,9 +5,8 @@
                   [lein-describe "0.2.0"]
                   [lein-exec "0.3.2"]
                   [lein-simpleton "1.2.0"]
-                  [cider/cider-nrepl "0.8.0-SNAPSHOT"]
+                  [cider/cider-nrepl "0.8.2-SNAPSHOT"]
                   [lein-vanity "0.2.0"]
-                  [com.jakemccrary/lein-test-refresh "0.5.0"]
                   [org.timmc/nephila "0.2.0"]]
         :repl-options {:nrepl-middleware [io.aviso.nrepl/pretty-middleware]
                        :init (do
@@ -25,8 +24,9 @@
                        [io.aviso/pretty "0.1.10"]
                        [im.chit/vinyasa "0.2.2"]
                        [com.cemerick/pomegranate "0.3.0"]]
-        :injections [(require '[vinyasa.inject :as inject])
-                     (require 'io.aviso.repl)
+        :injections [(require '[vinyasa.inject :as inject]
+                              'io.aviso.repl
+                              'spyscope.core)
                      (inject/in ;; the default injected namespace is `.`
 
                       ;; note that `:refer, :all and :exclude can be used
