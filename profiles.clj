@@ -14,6 +14,7 @@
                                (require '[clojure.tools.namespace.repl
                                           :refer [refresh]])
                                (require '[clojure.repl :refer :all]))}
+        :jvm-opts ["-XX:-OmitStackTraceInFastThrow"]
         :dependencies [[org.clojure/tools.trace "0.7.8"]
                        [pjstadig/humane-test-output "0.6.0"]
                        [print-foo "0.4.7"]
