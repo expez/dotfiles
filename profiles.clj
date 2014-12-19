@@ -22,7 +22,7 @@
                        [org.clojure/tools.namespace "0.2.5"]
                        [leiningen #=(leiningen.core.main/leiningen-version)]
                        [im.chit/iroh "0.1.11"]
-                       [io.aviso/pretty "0.1.10"]
+                       [io.aviso/pretty "0.1.13"]
                        [im.chit/vinyasa "0.2.2"]
                        [com.cemerick/pomegranate "0.3.0"]]
         :injections [(require '[vinyasa.inject :as inject]
