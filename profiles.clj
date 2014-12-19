@@ -16,11 +16,9 @@
                                           :refer [refresh]])
                                (require '[clojure.repl :refer :all]))}
         :jvm-opts ["-XX:-OmitStackTraceInFastThrow"]
-        :dependencies [[org.clojure/tools.trace "0.7.8"]
-                       [pjstadig/humane-test-output "0.6.0"]
+        :dependencies [[pjstadig/humane-test-output "0.6.0"]
                        [print-foo "0.4.7"]
                        [spyscope "0.1.5"]
-                       [org.clojure/tools.namespace "0.2.5"]
                        [leiningen #=(leiningen.core.main/leiningen-version)]
                        [im.chit/iroh "0.1.11"]
                        [io.aviso/pretty "0.1.13"]
@@ -49,8 +47,6 @@
                       ;; inject into clojure.core with prefix
                       clojure.core >
                       [clojure.pprint pprint]
-                      [clojure.tools.trace trace deftrace
-                       trace-forms trace-ns trace-vars]
                       [clojure.java.shell sh])
 
                      (require 'pjstadig.humane-test-output)
