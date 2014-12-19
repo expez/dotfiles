@@ -6,6 +6,7 @@
                   [lein-exec "0.3.2"]
                   [lein-simpleton "1.2.0"]
                   [cider/cider-nrepl "0.8.2-SNAPSHOT"]
+                  [refactor-nrepl "0.3.0-SNAPSHOT"]
                   [lein-vanity "0.2.0"]
                   [org.timmc/nephila "0.2.0"]]
         :repl-options {:nrepl-middleware [io.aviso.nrepl/pretty-middleware]
