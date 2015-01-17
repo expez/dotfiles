@@ -23,7 +23,7 @@
                        [leiningen #=(leiningen.core.main/leiningen-version)]
                        [im.chit/iroh "0.1.11"]
                        [io.aviso/pretty "0.1.13"]
-                       [im.chit/vinyasa "0.2.2"]
+                       [im.chit/vinyasa "0.3"]
                        [com.cemerick/pomegranate "0.3.0"]]
         :injections [(require '[vinyasa.inject :as inject]
                               'io.aviso.repl
@@ -43,7 +43,7 @@
 
                       ;; inject into clojure.core
                       clojure.core
-                      [iroh.core .> .? .* .% .%>]
+                      [vinyasa.reflection .> .? .* .% .%> .& .>ns .>var]
 
                       ;; inject into clojure.core with prefix
                       clojure.core >
