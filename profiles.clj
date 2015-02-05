@@ -1,7 +1,7 @@
 {:user {:plugins [[lein-localrepo "0.5.3"]
                   [lein-try "0.4.1"]
                   [lein-pprint "1.1.1"]
-                  [lein-ancient "0.5.4"]
+                  [lein-ancient "0.6.2"]
                   [lein-describe "0.2.0"]
                   [lein-exec "0.3.2"]
                   [lein-simpleton "1.2.0"]
