@@ -82,7 +82,7 @@
 	new = green
 
 [push]
-	default = upstream
+	default = simple
 
 [rebase]
 	autosquash = true
