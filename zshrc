@@ -21,6 +21,7 @@ export PATH=$HOME/.cask/bin:$PATH
 export PATH=/home/expez/.cabal/bin:$PATH
 export PATH=/home/expez/vendor/intellij/bin:$PATH
 export PATH=/home/expez/.gem/ruby/2.0.0/bin:$PATH
+export PATH=/home/expez/.local/bin/:$PATH
 source ~/vendor/antigen/antigen.zsh
 if [ -f /home/expez/git/dotfiles/secrets.sh ]; then
   source /home/expez/git/dotfiles/secrets.sh
