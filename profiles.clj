@@ -6,27 +6,23 @@
         :repl-options {:init (do
                                (set! *print-length* 200)
                                (require '[clojure.repl :refer :all]
-                                        '[print.foo :refer :all]))}
+                                        '[print.foo :refer :all]
+                                        '[spyscope.core]
+                                        'pjstadig.humane-test-output)
+                               (pjstadig.humane-test-output/activate!))}
         :jvm-opts ["-XX:-OmitStackTraceInFastThrow"]
         :dependencies [[pjstadig/humane-test-output "0.6.0"]
                        [print-foo "1.0.1"]
                        [spyscope "0.1.5"]
                        [acyclic/squiggly-clojure "0.1.2-SNAPSHOT"]
-                       [com.cemerick/pomegranate "0.3.0"]
-                       [im.chit/vinyasa "0.3.0"]]
-        :injections [(require 'spyscope.core)
-                     (require '[vinyasa.inject :as inject])
+                       [im.chit/vinyasa.inject "0.3.4"]
+                       [im.chit/vinyasa.reimport "0.3.4"]
+                       [im.chit/vinyasa.reflection "0.3.4"]
+                       [im.chit/vinyasa.lein "0.3.4"]
+                       [leiningen #=(leiningen.core.main/leiningen-version)]
+                       [alembic "0.3.2"]]
+        :injections [(require '[vinyasa.inject :as inject])
                      (inject/in ;; the default injected namespace is `.`
-
-                      ;; note that `:refer, :all and :exclude can be used
-                      [vinyasa.inject :refer [inject [in inject-in]]]
-
-                      ;; imports all functions in vinyasa.pull
-                      [vinyasa.pull :all]
-
-                      ;; same as [cemerick.pomegranate :refer [add-classpath
-                      ;;          get-classpath resources]]
-                      [cemerick.pomegranate add-classpath get-classpath resources]
 
                       ;; inject into clojure.core
                       clojure.core
@@ -34,8 +30,6 @@
 
                       ;; inject into clojure.core with prefix
                       clojure.core >
+                      [vinyasa.reimport reimport]
                       [clojure.pprint pprint]
-                      [clojure.java.shell sh])
-
-                     (require 'pjstadig.humane-test-output)
-                     (pjstadig.humane-test-output/activate!)]}}
+                      [clojure.java.shell sh])]}}
