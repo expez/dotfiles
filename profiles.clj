@@ -29,10 +29,10 @@
                       clojure.core
                       [vinyasa.reflection .> .? .* .% .%> .& .>ns .>var]
                       [print.foo :all]
-                      [clojure.repl :all]
 
                       ;; inject into clojure.core with prefix
                       clojure.core >
                       [vinyasa.reimport reimport]
                       [clojure.pprint pprint]
-                      [clojure.java.shell sh])]}}
+                      [clojure.java.shell sh]
+                      [clojure.repl :all])]}}
