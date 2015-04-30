@@ -7,9 +7,7 @@
         :test-refresh {:quiet true}
         :repl-options {:init (do
                                (set! *print-length* 200)
-                               (require '[clojure.repl :refer :all]
-                                        '[print.foo :refer :all]
-                                        '[spyscope.core]
+                               (require '[spyscope.core]
                                         'pjstadig.humane-test-output)
                                (pjstadig.humane-test-output/activate!))}
         :jvm-opts ["-XX:-OmitStackTraceInFastThrow"]
@@ -30,6 +28,8 @@
                       ;; inject into clojure.core
                       clojure.core
                       [vinyasa.reflection .> .? .* .% .%> .& .>ns .>var]
+                      [print.foo :all]
+                      [clojure.repl :all]
 
                       ;; inject into clojure.core with prefix
                       clojure.core >
