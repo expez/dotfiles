@@ -4,6 +4,8 @@
                   [cider/cider-nrepl "0.9.0-SNAPSHOT"]
                   [com.jakemccrary/lein-test-refresh "0.9.0"]
                   [lein-vanity "0.2.0"]]
+        :license {:author "Lars Andersen"
+                  :email  "expez@expez.com"}
         :test-refresh {:quiet true}
         :repl-options {:init (do
                                (set! *print-length* 200)
