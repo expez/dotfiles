@@ -1,7 +1,8 @@
 {:user {:plugins [[lein-localrepo "0.5.3"]
                   [lein-ancient "0.6.3"]
-                  [refactor-nrepl "1.0.4-SNAPSHOT"]
-                  [cider/cider-nrepl "0.9.0-SNAPSHOT"]
+                  [lein-license "0.1.3"]
+                  [refactor-nrepl "1.1.0-SNAPSHOT"]
+                  [cider/cider-nrepl "0.9.1"]
                   [com.jakemccrary/lein-test-refresh "0.9.0"]
                   [lein-vanity "0.2.0"]]
         :license {:author "Lars Andersen"
