@@ -303,7 +303,7 @@ update-submodules() {
     git stash pop
 }
 
-ignore() {
+git_ignore() {
     if [ -z "$1" ] ; then
         cat .gitignore
     else
