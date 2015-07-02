@@ -34,3 +34,5 @@ inoremap <C-e> <C-o> $
 
 noremap <C-a> 0
 inoremap <C-e> <C-o> 0
+
+noremap Y y$
