@@ -4,8 +4,6 @@ nnoremap <C-w><C-q> :action CloseContent<CR>
 nnoremap <A-.> :action GotoDeclaration<CR>
 nnoremap <A-,> :action Back<CR>
 
-nnoremap <C-Space> :action AceJumpAction<CR>
-
 nnoremap <Space>vs :source ~/.ideavimrc<CR>
 
 source ~/.vimrc
