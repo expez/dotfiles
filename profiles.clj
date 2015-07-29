@@ -19,7 +19,7 @@
                        [print-foo "1.0.1"]
                        [spyscope "0.1.5"]
                        [alembic "0.3.2"]
-                       [acyclic/squiggly-clojure "0.1.2-SNAPSHOT"]
+                       [acyclic/squiggly-clojure "0.1.3-SNAPSHOT"]
                        [im.chit/vinyasa.inject "0.3.4"]
                        [im.chit/vinyasa.reimport "0.3.4"]
                        [im.chit/vinyasa.reflection "0.3.4"]
