@@ -22,7 +22,6 @@
                        [im.chit/vinyasa.inject "0.3.4"]
                        [im.chit/vinyasa.reimport "0.3.4"]
                        [im.chit/vinyasa.reflection "0.3.4"]
-                       [im.chit/vinyasa.lein "0.3.4"]
                        [leiningen #=(leiningen.core.main/leiningen-version)]]
         :injections [(require '[vinyasa.inject :as inject])
                      (inject/in ;; the default injected namespace is `.`
