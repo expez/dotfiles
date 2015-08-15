@@ -15,7 +15,6 @@
                                (pjstadig.humane-test-output/activate!))}
         :jvm-opts ["-XX:-OmitStackTraceInFastThrow"]
         :dependencies [[pjstadig/humane-test-output "0.6.0"]
-                       [org.clojure/tools.nrepl "0.2.10"]
                        [print-foo "1.0.1"]
                        [spyscope "0.1.5"]
                        [alembic "0.3.2"]
