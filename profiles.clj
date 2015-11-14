@@ -23,7 +23,7 @@
                        [im.chit/vinyasa.reimport "0.3.4"]
                        [im.chit/vinyasa.reflection "0.3.4"]
                        [leiningen #=(leiningen.core.main/leiningen-version)]]
-                       [org.clojure/tools.nrepl "0.2.11"]
+                       [org.clojure/tools.nrepl "0.2.12"]
         :injections [(require '[vinyasa.inject :as inject])
                      (inject/in ;; the default injected namespace is `.`
 
