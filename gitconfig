@@ -3,7 +3,7 @@
 	email = expez@expez.com
 
 [core]
-	editor = egit
+	editor = vim
 	pager = less -FRXS
 	whitespace = -indent-with-non-tab,-cr-at-eol,trailing-space
 	excludesfile = ~/git/dotfiles/gitexcludes
