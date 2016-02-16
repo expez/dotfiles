@@ -1,8 +1,8 @@
-{:user {:plugins [[lein-localrepo "0.5.3"]
-                  [lein-ancient "0.6.3"]
-                  [lein-license "0.1.3"]
-                  [com.jakemccrary/lein-test-refresh "0.9.0"]
-                  [lein-vanity "0.2.0"]]
+{:user {:plugins [[lein-localrepo "0.5.3" :exclusions [org.clojure/clojure]]
+                  [lein-ancient "0.6.3" :exclusions [org.clojure/clojure]]
+                  [lein-license "0.1.3" :exclusions [org.clojure/clojure]]
+                  [com.jakemccrary/lein-test-refresh "0.9.0" :exclusions [org.clojure/clojure]]
+                  [lein-vanity "0.2.0" :exclusions [org.clojure/clojure]]]
         :license {:author "Lars Andersen"
                   :email  "expez@expez.com"}
         :test-refresh {:quiet true}
