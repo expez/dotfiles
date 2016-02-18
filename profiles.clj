@@ -2,7 +2,8 @@
                   [lein-ancient "0.6.3" :exclusions [org.clojure/clojure]]
                   [lein-license "0.1.3" :exclusions [org.clojure/clojure]]
                   [com.jakemccrary/lein-test-refresh "0.9.0" :exclusions [org.clojure/clojure]]
-                  [lein-vanity "0.2.0" :exclusions [org.clojure/clojure]]]
+                  [lein-vanity "0.2.0" :exclusions [org.clojure/clojure]]
+                  [lein-environ "1.0.2"]]
         :license {:author "Lars Andersen"
                   :email  "expez@expez.com"}
         :test-refresh {:quiet true}
