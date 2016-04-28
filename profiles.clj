@@ -9,9 +9,7 @@
         :test-refresh {:quiet true}
         :jvm-opts ["-XX:-OmitStackTraceInFastThrow"]
         :dependencies [[pjstadig/humane-test-output "0.6.0"]]}
- :repl {:plugins [[refactor-nrepl "2.2.0-SNAPSHOT"]
-                  [cider/cider-nrepl "0.11.0-SNAPSHOT"]]
-        :dependencies [[print-foo "1.0.1"]
+ :repl {:dependencies [[print-foo "1.0.1"]
                        [spyscope "0.1.5"]
                        [alembic "0.3.2"]
                        [acyclic/squiggly-clojure "0.1.5"]
