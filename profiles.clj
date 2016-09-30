@@ -13,9 +13,9 @@
                        [spyscope "0.1.6"]
                        [alembic "0.3.2"]
                        [acyclic/squiggly-clojure "0.1.5"]
-                       [im.chit/vinyasa.inject "0.3.4"]
-                       [im.chit/vinyasa.reimport "0.3.4"]
-                       [im.chit/vinyasa.reflection "0.3.4"]]
+                       [im.chit/vinyasa.inject "0.4.7"]
+                       [im.chit/vinyasa.reimport "0.4.7"]
+                       [im.chit/vinyasa.reflection "0.4.7"]]
         :repl-options {:init (do
                                (set! *print-length* 200)
                                (require '[spyscope.core]
