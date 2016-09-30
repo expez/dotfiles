@@ -10,7 +10,7 @@
         :jvm-opts ["-XX:-OmitStackTraceInFastThrow"]
         :dependencies [[pjstadig/humane-test-output "0.6.0"]]}
  :repl {:dependencies [[print-foo "1.0.1"]
-                       [spyscope "0.1.5"]
+                       [spyscope "0.1.7"]
                        [alembic "0.3.2"]
                        [acyclic/squiggly-clojure "0.1.5"]
                        [im.chit/vinyasa.inject "0.3.4"]
