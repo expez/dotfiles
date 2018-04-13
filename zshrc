@@ -21,19 +21,20 @@ export PATH=$HOME/.cask/bin:$PATH
 export PATH=/home/expez/.cabal/bin:$PATH
 export PATH=/home/expez/vendor/intellij/bin:$PATH
 export PATH=/home/expez/.gem/ruby/2.0.0/bin:$PATH
+export PATH=/home/expez/.gem/ruby/2.2.0/bin:$PATH
 export PATH=/home/expez/.local/bin/:$PATH
 source ~/vendor/antigen/antigen.zsh
 if [ -f /home/expez/git/dotfiles/secrets.sh ]; then
-  source /home/expez/git/dotfiles/secrets.sh
+    source /home/expez/git/dotfiles/secrets.sh
 fi
 
-antigen-bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-syntax-highlighting
 
-antigen-bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-completions
 
-antigen-bundle zsh-users/zsh-history-substring-search
+antigen bundle zsh-users/zsh-history-substring-search
 
-antigen-apply
+antigen apply
 
 autoload -U colors
 colors
@@ -354,9 +355,6 @@ fpath=(~/.zsh/completion $fpath)
 
 mwiki () { blah=`echo $@ | sed -e 's/ /_/g'`; dig +short txt $blah.wp.dg.cx; }
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-
 function fgr() {
     find . -iname $1 -exec egrep -Hni $2 '{}' \;
 }
@@ -374,4 +372,6 @@ function scrots() {
 # [ -f /usr/bin/virtualenvwrapper.sh ] && source /usr/bin/virtualenvwrapper.sh
 
 # stop accidental freezing when you click ctrl-s
-stty -ixon 
+stty -ixon
+
+export ANSIBLE_HOST_KEY_CHECKING=false
