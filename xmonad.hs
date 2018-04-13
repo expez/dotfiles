@@ -65,7 +65,7 @@ myKeys =
     ]
     ++
     [ (mask ++ "M-" ++ [key], screenWorkspace scr >>= flip whenJust (windows . action))
-         | (key, scr)  <- zip "wer" [2,0,1] -- was [0..] *** change to match your screen order ***
+         | (key, scr)  <- zip "wer" [0,1,2] -- was [0..] *** change to match your screen order ***
          , (action, mask) <- [ (W.view, "") , (W.shift, "S-")]
     ]
 
@@ -81,7 +81,8 @@ keys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_p     ), spawn "gmrun") -- %! Launch gmrun
     , ((modMask .|. shiftMask, xK_c     ), kill) -- %! Close the focused window
 
-    , ((modMask,               xK_space ), sendMessage NextLayout) -- %! Rotate through the available layout algorithms
+    -- , ((modMask,               xK_space ), sendMessage NextLayout) -- %! Rotate through the available layout algorithms
+    , ((modMask,               xK_space ), spawn "changeLayout") -- %! Rotate through the available layout algorithms
     , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf) -- %!  Reset the layouts on the current workspace to default
 
     , ((modMask,               xK_n     ), refresh) -- %! Resize viewed windows to the correct size
